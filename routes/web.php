@@ -16,7 +16,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
 Route::get('/users', function () {
     return "Users";
 });

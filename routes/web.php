@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,5 +18,5 @@ Route::middleware([
 });
 
 Route::get('/users', function () {
-    return "Users";
+    return view('users');
 });

@@ -30,6 +30,7 @@
                 <div class="group relative">
                     <button class="hidden">list</button>
                     <div class="space-x-3 text-center" id="#dropdown">
+                        {{-- this is the username after login  --}}
                         <span class="text-lg font-semibold capitalize">{{ Auth::user()->name }}</span>
                         <span>
                             <i class="fa-solid fa-user text-2xl"></i>

@@ -21,21 +21,14 @@
         <nav class="shadow bg-blue-900 px-3 py-4 flex items-center justify-between fixed top-0 w-full lg:px-10">
             <div class="container mx-auto flex justify-between items-center px-5 text-white">
                 <div>
-                    <a href="{{ route('dashboard') }}" class="text-2xl font-semibold">
+                    <a href="{{ route('root') }}" class="text-2xl font-semibold">
                         <h1>CYBER GATE</h1>
                     </a>
                 </div>
                 <div class="group relative">
                     <button class="hidden">list</button>
-                    {{-- <div class="space-x-3 hidden group-focus-within:block absolute md:static -bottom-10 translate-y-full w-40 md:w-auto right-0 md:right-auto md:bottom-0 md:block md:translate-x-0 md:translate-y-0 rounded md:shadow-none shadow md:text-white text-black bg-white text-center px-3 py-2 md:text-left md:p-0 md:bg-transparent"
-                        id="#dropdown">
-                        <span class="text-lg font-semibold capitalize">user name</span>
-                        <span>
-                            <i class="fa-solid fa-user text-2xl"></i>
-                        </span>
-                    </div> --}}
                     <div class="space-x-3 text-center" id="#dropdown">
-                        <span class="text-lg font-semibold capitalize">user name</span>
+                        <span class="text-lg font-semibold capitalize">{{ Auth::user()->name }}</span>
                         <span>
                             <i class="fa-solid fa-user text-2xl"></i>
                         </span>
@@ -48,25 +41,36 @@
             @yield('content')
         </div>
 
-        <footer class="bg-blue-900 px-4 py-3 fixed bottom-0 w-full">
-            <div class="text-center text-white">
-                <p class="">Copyright &copy;<strong>Cyber Gate </strong>all reversed in 2022</p>
+        <footer class="px-4 py-3 fixed bottom-0 w-full bg-white">
+            <div class="container px-5 py-2 mx-auto flex items-center sm:flex-row flex-col">
+                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <img src="{{ asset('assets/logo/logo.png') }}" class="w-5 h-5 img-responsive" alt="">
+                    <span class="ml-3 text-xl">CyberGate</span>
+                </a>
+                <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+                <p style="text-align: center"> Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>, <strong>Cyber Gate</strong>, All Rights Reserved
+                </p>
+                </p>
+
             </div>
         </footer>
     </div>
     <script>
         $('#summernote').summernote({
-            placeholder: 'Hello stand alone ui',
+            placeholder: 'please! write about your problem.',
             tabsize: 2,
-            height: 120,
+            height: 200,
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
+                ['insert', ['link', 'picture']],
+                ['view', ['fullscreen', 'codeview']]
             ]
         });
     </script>

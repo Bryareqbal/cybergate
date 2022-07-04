@@ -45,7 +45,7 @@
 
         <form method="POST">
             <div class="">
-                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
                     style="max-width: 300px">
                     <div class="space-y-1 text-center">
                         <svg class="mx-auto h-20 w-20 text-gray-400" stroke="currentColor" fill="none"
@@ -68,38 +68,33 @@
             </div>
 
 
-            <div class="grid  gap-6 my-6 lg:grid-cols-3 md:grid-cols-2   p-2 lg:mx-0 sm:grid-col-1 ">
+            <div class="grid  gap-6 my-6 lg:grid-cols-3 md:grid-cols-2   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class=" text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 capitalize">Full name</span>
                         <input
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Full Name" />
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 capitalize">email address</span>
                         <input
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Email Address" />
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 capitalize">phone number</span>
                         <input type="number"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Phone Number" />
                     </label>
                 </div>
 
                 <div class="w-full">
-                    <span class="text-gray-700 dark:text-gray-400 capitalize">
-                        City
-                    </span>
                     <select
-                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
+                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
+                        <option>Cities</option>
                         <option>Sulaymaniah</option>
                         <option>Hawler</option>
                         <option>Karkuk</option>
@@ -108,60 +103,59 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 capitalize">state address</span>
                         <input type="text"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="State Address" />
                     </label>
                 </div>
 
                 <div class="text-sm">
-                    <span class="text-gray-700 dark:text-gray-400 capitalize">date of birth</span>
                     <input type="date"
-                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                         placeholder="State Address" />
                 </div>
+                <div class="grid px-4 py-2 gap-6 grid-col-3 md:grid-col-2 sm:grid-col-1">
+                    <div class="mt-4 ">
+                        <span class="text-gray-700">
+                            Gender
+                        </span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center text-gray-600">
+                                <input type="radio" value="0"
+                                    class="text-purple-600  focus:outline-none  focus:shadow-outline-gray" />
+                                <span class="ml-2">Male</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6 text-gray-600 ">
+                                <input type="radio" value="1"
+                                    class="text-purple-600  focus:outline-none  focus:shadow-outline-gray" />
+                                <span class="ml-2">Male</span>
 
-                <div class="w-full ">
-                    <label class="text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 capitalize">type problem</span>
-                        <input type="text"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="Type Problem" />
-                    </label>
+                            </label>
+                        </div>
+                    </div>
+
+
+
                 </div>
-
-
-
             </div>
-            <div class="block px-8  mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">description problem</span>
+            <hr class="border border-slate-600 mb-5">
+            <div class="w-full ">
+                <label class="text-sm">
+                    <input type="text"
+                        class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                        placeholder="Type Problem" />
+                </label>
+            </div>
+            <div class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold">description
+                    problem</span>
                 <textarea id="summernote"
                     class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                     rows="8" placeholder="Describe Your Problem..."></textarea>
             </div>
 
 
-            <div class="grid px-4 py-2 gap-6 grid-col-3 md:grid-col-2 sm:grid-col-1">
-                <div class="mt-4 ">
-                    <span class="text-gray-700">
-                        Gender
-                    </span>
-                    <div class="mt-2">
-                        <label class="inline-flex items-center text-gray-600">
-                            <input type="radio" value="0"
-                                class="text-purple-600  focus:border-purple-400 focus:outline-none  focus:shadow-outline-gray" />
-                            <span class="ml-2">Male</span>
-                        </label>
-                        <label class="inline-flex items-center ml-6 text-gray-600 ">
-                            <input type="radio" value="1"
-                                class="text-purple-600  focus:border-purple-400 focus:outline-none  focus:shadow-outline-gray" />
-                            <span class="ml-2">Male</span>
 
-                        </label>
-                    </div>
-                </div>
-            </div>
 
 
         </form>

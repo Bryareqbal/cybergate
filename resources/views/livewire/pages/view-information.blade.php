@@ -43,12 +43,12 @@
         <h1 class="text-blue-900 text-4xl font-bold text-center">Documents</h1>
     </div>
     <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mx-auto md:mx-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
             @for ($i = 0; $i <= 7; $i++)
                 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
                     <div class="flex flex-col items-center pb-3">
                         <img class="mb-3 w-2/3 my-3 aspect-square object-cover object-center rounded-md"
-                            src=" {{ asset('assets/images/test.jpg') }}" alt="Bonnie image">
+                            src=" {{ asset('assets/images/user.jpg') }}" alt="Bonnie image">
                         <h5 class="mb-1 text-xl font-medium text-gray-900">Bonnie Green</h5>
                         <span class="text-sm text-gray-500">Visual Designer</span>
                         <div class="flex mt-4 space-x-3 lg:mt-6">

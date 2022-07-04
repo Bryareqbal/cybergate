@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
+
+    <link rel="shortcut icon" href="{{asset('assets/logo/logo.png')}}" type="image/png">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -18,7 +20,7 @@
 
 <body>
     <div class="">
-        <nav class="shadow bg-blue-900 px-3 py-4 flex items-center justify-between fixed top-0 w-full lg:px-10">
+        <nav class="shadow bg-blue-900 px-3 py-4 flex items-center justify-between fixed z-20 top-0 w-full lg:px-10">
             <div class="container mx-auto flex justify-between items-center px-5 text-white">
                 <div>
                     <a href="{{ route('root') }}" class="text-2xl font-semibold">

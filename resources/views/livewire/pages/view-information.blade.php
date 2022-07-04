@@ -43,40 +43,9 @@
         <h1 class="text-blue-900 text-4xl font-bold text-center">Documents</h1>
     </div>
     <div class="container mx-auto">
-        <div class="grid grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mx-auto md:mx-0">
             @for ($i = 0; $i <= 7; $i++)
                 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
-                    {{-- <div class="flex justify-end px-4 pt-4">
-                    <button id="dropdownButton" data-dropdown-toggle="dropdown"
-                        class="hidden sm:inline-block text-gray-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm p-1.5"
-                        type="button">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
-                            </path>
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdown"
-                        class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
-                        style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(846px, 3047px);"
-                        data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top">
-                        <ul class="py-1" aria-labelledby="dropdownButton">
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Edit</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Export
-                                    Data</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100">Delete</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> --}}
                     <div class="flex flex-col items-center pb-3">
                         <img class="mb-3 w-2/3 my-3 aspect-square object-cover object-center rounded-md"
                             src=" {{ asset('assets/images/test.jpg') }}" alt="Bonnie image">

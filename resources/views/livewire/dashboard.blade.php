@@ -163,7 +163,7 @@
                 </div>
             </div>
 
-            <div class="w-full  p-2
+            <a href="/user/profile" class="w-full  p-2
               cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg
@@ -183,8 +183,8 @@
 
                     </div>
                 </div>
-            </div>
-            <div class="w-full  p-2  cursor-pointer opacity-80">
+            </a>
+            <a href="{{ route('users') }}" class="w-full  p-2  cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg
                  duration-300 hover:shadow-2xl bg-gradient-to-br from-purple-50 to-purple-100">
@@ -203,7 +203,7 @@
 
                     </div>
                 </div>
-            </div>
+            </a>
 
 
         </div>

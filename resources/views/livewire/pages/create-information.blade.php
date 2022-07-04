@@ -136,7 +136,7 @@
             </div>
             <div class="block px-8  mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">description problem</span>
-                <textarea
+                <textarea id="summernote"
                     class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                     rows="8" placeholder="Describe Your Problem..."></textarea>
             </div>

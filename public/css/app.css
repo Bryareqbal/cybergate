@@ -1291,6 +1291,24 @@ select {
 .min-h-screen {
   min-height: 100vh;
 }
+.min-h-\[80vh\] {
+  min-height: 80vh;
+}
+.min-h-\[90vh\] {
+  min-height: 90vh;
+}
+.min-h-\[88vh\] {
+  min-height: 88vh;
+}
+.min-h-\[85vh\] {
+  min-height: 85vh;
+}
+.min-h-\[86vh\] {
+  min-height: 86vh;
+}
+.min-h-\[87vh\] {
+  min-height: 87vh;
+}
 .w-5 {
   width: 1.25rem;
 }
@@ -2055,6 +2073,15 @@ select {
 }
 .pl-1 {
   padding-left: 0.25rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+.pb-14 {
+  padding-bottom: 3.5rem;
+}
+.pb-20 {
+  padding-bottom: 5rem;
 }
 .text-left {
   text-align: left;

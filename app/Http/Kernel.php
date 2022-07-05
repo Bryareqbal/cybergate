@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\addingInformation;
+use App\Http\Middleware\asaysh;
+use App\Http\Middleware\isSuperAdmin;
+use App\Http\Middleware\viewingInformation;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +67,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        "addingInformation" => addingInformation::class,
+        "viewingInformation" => viewingInformation::class,
+        "isSuperAdmin" => isSuperAdmin::class,
+        "asaysh" => asaysh::class,
     ];
 }

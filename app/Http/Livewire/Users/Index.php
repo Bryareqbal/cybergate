@@ -3,7 +3,6 @@ namespace App\Http\Livewire\Users;
 
 use Livewire\Component;
 use App\Models\user as Users;
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 
 class Index extends Component
@@ -23,16 +22,18 @@ class Index extends Component
         $user->status=!$user->status;
         $user->save();
         session()->flash('message', ' your status has been changed');
-        return redirect()->back();
+        return redirect()->route('users');
     }
     public function SetPermission($status, $id)
     {
-        $user=Users::findorfail(1);
+        $user=Users::findorfail($id);
         $user->permission=$status;
         $user->save();
         session()->flash('message', ' your permission has been changed');
         return redirect()->back();
     }
+
+
     public function render()
     {
         $users=Users::search($this->search)->latest()->paginate($this->limit);

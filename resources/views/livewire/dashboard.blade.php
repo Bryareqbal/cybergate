@@ -19,6 +19,12 @@
                 </li>
             </ol>
         </nav>
+        @error('message')
+            {{ Auth::user()->permission }}
+            <div class="bg-red-100 font-semibold border-l-4 max-w-md border-red-500 text-red-700 p-4 mb-4" role="alert">
+                {{ $message }}
+            </div>
+        @enderror
         <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-5 p-2 lg:mx-0 sm:grid-col-1 ">
             <a href="{{ route('adding_information') }}" class="w-full p-2  cursor-pointer opacity-80">
                 <div

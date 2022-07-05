@@ -112,29 +112,26 @@
                 </div>
             </div>
 
-            <div class="w-full  p-2  cursor-pointer opacity-80">
-                <div
-                    class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg
+            <form class="w-full p-2 cursor-pointer opacity-80" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button
+                    class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg w-full text-left
                  duration-300 hover:shadow-2xl bg-gradient-to-br from-green-50 to-green-100">
                     <div class="flex flex-row items-center">
                         <div class="px-4 py-4 bg-green-300  rounded-xl bg-opacity-30">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                            </svg>
+                            <i class="fa-solid fa-arrow-right-from-bracket h-5 w-5 text-center"></i>
                         </div>
                     </div>
                     <h1 class="text-3xl sm:text-4xl xl:text-2xl font-bold text-gray-700 mt-10 group-hover:text-gray-50">
-                        No Name</h1>
+                        Logout</h1>
                     <div class="flex flex-row justify-between group-hover:text-gray-200 ">
                         <p class="text-sm mt-1 text-gray-500">Current Data</p>
 
                         <p class="text-sm mt-1 text-gray-500">12</p>
 
                     </div>
-                </div>
-            </div>
+                </button>
+            </form>
 
 
             <div class="w-full  p-2 cursor-pointer opacity-80">

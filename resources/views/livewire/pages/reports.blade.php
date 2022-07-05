@@ -46,7 +46,7 @@
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
                 <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2">
+                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
                     <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
                         placeholder="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -153,7 +153,7 @@
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
                 <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2">
+                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
                     <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
                         placeholder="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -265,7 +265,7 @@
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
                 <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2">
+                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
                     <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
                         placeholder="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

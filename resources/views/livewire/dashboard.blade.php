@@ -20,7 +20,6 @@
             </ol>
         </nav>
         @error('message')
-            {{ Auth::user()->permission }}
             <div class="bg-red-100 font-semibold border-l-4 max-w-md border-red-500 text-red-700 p-4 mb-4" role="alert">
                 {{ $message }}
             </div>

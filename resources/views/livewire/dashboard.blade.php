@@ -19,7 +19,7 @@
                 </li>
             </ol>
         </nav>
-        <div class="grid  lg:grid-cols-4 md:grid-cols-2 gap-5 p-2 lg:mx-0 sm:grid-col-1 ">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-5 p-2 lg:mx-0 sm:grid-col-1 ">
             <a href="{{ route('adding_information') }}" class="w-full p-2  cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg

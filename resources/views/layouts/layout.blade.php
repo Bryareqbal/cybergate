@@ -30,8 +30,13 @@
                 <div class="group relative">
                     <button class="hidden">list</button>
                     <div class="space-x-3 text-center" id="#dropdown">
+<<<<<<< HEAD
                         <span
                             class="text-lg font-semibold capitalize whitespace-nowrap">{{ Str::limit(Auth::user()->name, 10, '..') }}</span>
+=======
+                        {{-- this is the username after login  --}}
+                        <span class="text-lg font-semibold capitalize">{{ Auth::user()->name }}</span>
+>>>>>>> 04f9c263cfc6a4636ed3976fcd9fa10ef0d79898
                         <span>
                             <i class="fa-solid fa-user text-2xl"></i>
                         </span>

@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query() :
+         static::where('name', 'LIKE', '%'.$search.'%')
+         ->OrWhere('email', 'LIKE', '%'.$search.'%')
+         ->OrWhere('permission', 'LIKE', '%'.$search.'%');
+    }
 }

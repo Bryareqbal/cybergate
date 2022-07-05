@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\pages\ViewInformation;
 use App\Http\Livewire\pages\CreateInformation;
+use App\Http\Livewire\Pages\Reports;
 use App\Http\Livewire\Users\Index;
 
 Route::get('/', function () {
@@ -23,6 +24,7 @@ Route::middleware([
     Route::get('/view_information', ViewInformation::class)->name('view_information');
     Route::get('/adding_information', CreateInformation::class)->name('adding_information');
     Route::get('/users', Index::class)->name('users');
+    Route::get('/reports', Reports::class)->name('reports');
 
     // end pages
 

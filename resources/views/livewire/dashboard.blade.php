@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('adding_information') }}" class="w-full  p-2
+            <a href="{{ route('reports') }}" class="w-full  p-2
               cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg

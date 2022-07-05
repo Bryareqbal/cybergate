@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
 
-    <link rel="shortcut icon" href="{{asset('assets/logo/logo.png')}}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/logo/logo.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -21,7 +21,7 @@
 <body>
     <div class="">
         <nav class="shadow bg-blue-900 px-3 py-4 flex items-center justify-between fixed z-20 top-0 w-full lg:px-10">
-            <div class="container mx-auto flex justify-between items-center px-5 text-white">
+            <div class="container mx-auto flex justify-between items-center md:px-5 text-white">
                 <div>
                     <a href="{{ route('root') }}" class="text-2xl font-semibold">
                         <h1>CYBER GATE</h1>
@@ -30,7 +30,8 @@
                 <div class="group relative">
                     <button class="hidden">list</button>
                     <div class="space-x-3 text-center" id="#dropdown">
-                        <span class="text-lg font-semibold capitalize">{{ Auth::user()->name }}</span>
+                        <span
+                            class="text-lg font-semibold capitalize whitespace-nowrap">{{ Str::limit(Auth::user()->name, 10, '..') }}</span>
                         <span>
                             <i class="fa-solid fa-user text-2xl"></i>
                         </span>

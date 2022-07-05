@@ -85,7 +85,7 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="number"
+                        <input type="text"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Phone Number" />
                     </label>

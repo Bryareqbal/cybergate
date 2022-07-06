@@ -46,7 +46,7 @@
 
         <form wire:submit.prevent="saveData" enctype="multipart/form-data">
             <div class="">
-                <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 @error('form.personal_image') border-red-500 @enderror border-dashed rounded-md"
                     style="max-width: 300px">
                     <div class="space-y-1 text-center">
                         <svg class="mx-auto h-20 w-20 text-gray-400" stroke="currentColor" fill="none"
@@ -67,6 +67,10 @@
                         <p class="text-xs text-gray-500">PNG, JPG, JPEG between 600KB-1MB</p>
                     </div>
                 </div>
+                @error('form.personal_image')
+                <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                @enderror
             </div>
 
 
@@ -74,8 +78,12 @@
                 <div class="w-full ">
                     <label class=" text-sm">
                         <input wire:model.defer="form.fullname"
-                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block border  @error('form.fullname') border-red-500 @enderror w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="Full Name" />
+                            @error('form.fullname')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                            @enderror
                     </label>
                 </div>
                 <div class="w-full ">
@@ -83,13 +91,19 @@
                         <input wire:model.defer="form.email"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Email Address" />
+
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.phone"
-                            class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 @error('form.phone') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="phone number" />
+                            @error('form.phone')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                            @enderror
+
                     </label>
                 </div>
 
@@ -97,12 +111,14 @@
                     <input type="text" wire:model.defer="form.state_address"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                         placeholder="State Address" />
+
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.region"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="region " />
+
                     </label>
                 </div>
                 <div class="w-full">
@@ -114,6 +130,7 @@
                         <option value="karkuk">Karkuk</option>
                         <option value="halabja">Halabja</option>
                     </select>
+
                 </div>
 
                 <div class="w-full ">
@@ -121,6 +138,7 @@
                         <input type="text" wire:model.defer="form.querter_address"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="quarter Address" />
+
                     </label>
                 </div>
 
@@ -135,6 +153,7 @@
                         <input type="text" wire:model.defer="form.links[]"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
+
                     </label>
                 </div>
                 <div class="w-full ">
@@ -142,6 +161,7 @@
                         <input type="text" wire:model.defer="form.links[]"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
+
                     </label>
                 </div>
                 <div class="w-full ">
@@ -149,6 +169,7 @@
                         <input type="text" wire:model.defer="form.links[]"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
+
                     </label>
                 </div>
             </div>
@@ -157,15 +178,23 @@
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.case"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm @error('form.case') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="case" />
+                            @error('form.case')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                            @enderror
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.type_of_problem"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm @error('form.case') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="Type Problem" />
+                            @error('form.type_of_problem')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                            @enderror
                     </label>
                 </div>
             </div>
@@ -175,6 +204,10 @@
                 <textarea id="summernote" wire:model.defer="form.description"
                     class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                     rows="8" placeholder="Describe Your Problem..."></textarea>
+                    @error('form.description')
+                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                    @enderror
             </div>
             <hr class="border border-gray-400   my-5">
 
@@ -183,13 +216,17 @@
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.personal_id"
-                            class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                            class="block w-full mt-1 text-sm @error('form.personal_id') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="Personal id" />
+                            @error('form.personal_id')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                            @enderror
                     </label>
                 </div>
                 <div class="w-full">
                     <div
-                        class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2  @error('form.file_image') border-red-500 @enderror  border-dashed rounded-md">
                         <div class="space-y-1 text-center">
                             <svg class="mx-auto h-20 w-20 text-gray-400" stroke="currentColor" fill="none"
                                 viewBox="0 0 48 48" aria-hidden="true">
@@ -208,7 +245,12 @@
                             </div>
                             <p class="text-xs text-gray-500">PNG, JPG, JPEG between 600KB-1MB</p>
                         </div>
+
                     </div>
+                    @error('form.file_image')
+                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+
+                    @enderror
                 </div>
 
             </div>
@@ -219,9 +261,7 @@
                     submit
                 </button>
             </div>
-            @error('form.personal_image')
-                {{ $message }}
-            @enderror
+          
 
 
 

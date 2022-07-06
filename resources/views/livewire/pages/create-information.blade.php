@@ -68,8 +68,7 @@
                     </div>
                 </div>
                 @error('form.personal_image')
-                <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
+                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -77,18 +76,17 @@
             <div class="grid  gap-6 my-6 lg:grid-cols-3 md:grid-cols-2   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class=" text-sm">
-                        <input wire:model.defer="form.fullname"
+                        <input wire:model.defer="form.fullname" name="name"
                             class="block border  @error('form.fullname') border-red-500 @enderror w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="Full Name" />
-                            @error('form.fullname')
+                        @error('form.fullname')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
-                            @enderror
+                        @enderror
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input wire:model.defer="form.email"
+                        <input wire:model.defer="form.email" name="email"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Email Address" />
 
@@ -96,33 +94,53 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.phone"
+                        <input type="text" wire:model.defer="form.phone" name="phone"
                             class="block w-full mt-1 @error('form.phone') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="phone number" />
-                            @error('form.phone')
+                        @error('form.phone')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+                        @enderror
 
-                            @enderror
+                    </label>
+                </div>
+                <div class="w-full ">
+                    <label class="text-sm">
+                        <input type="date" wire:model.defer="form.date_of_birth" name="date_of_birth"
+                            class="block w-full mt-1 @error('form.date_of_birth') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input" />
+                        @error('form.date_of_birth')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+                        @enderror
 
                     </label>
                 </div>
 
+                <div class="w-full">
+                    <select wire:model.defer="form.gender" name="gender"
+                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
+                        <option>--select gender--</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="other">other</option>
+                    </select>
+
+                </div>
+
                 <div class="text-sm">
-                    <input type="text" wire:model.defer="form.state_address"
+                    <input type="text" wire:model.defer="form.state_address" name="state_address"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                         placeholder="State Address" />
 
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.region"
+                        <input type="text" wire:model.defer="form.region" name="region"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="region " />
+                            placeholder="Region " />
 
                     </label>
                 </div>
                 <div class="w-full">
-                    <select wire:model.defer="form.city"
+                    <select wire:model.defer="form.city" name="city"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
                         <option>--select city--</option>
                         <option value="sulaymaniah">Sulaymaniah</option>
@@ -135,7 +153,7 @@
 
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.querter_address"
+                        <input type="text" wire:model.defer="form.querter_address" name="querter_address"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="quarter Address" />
 
@@ -150,7 +168,7 @@
             <div class="grid  gap-6 my-6 lg:grid-cols-3 md:grid-cols-2   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.links[]"
+                        <input type="text" wire:model.defer="form.links.link1" name="links"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
 
@@ -158,7 +176,7 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.links[]"
+                        <input type="text" wire:model.defer="form.links.link2"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
 
@@ -166,7 +184,7 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.links[]"
+                        <input type="text" wire:model.defer="form.links.link3"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="links" />
 
@@ -177,24 +195,22 @@
             <div class="grid  gap-6 my-8 lg:grid-cols-2 md:grid-cols-1   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.case"
+                        <input type="text" wire:model.defer="form.case" name="case"
                             class="block w-full mt-1 text-sm @error('form.case') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="case" />
-                            @error('form.case')
+                        @error('form.case')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
-                            @enderror
+                        @enderror
                     </label>
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.type_of_problem"
+                        <input type="text" wire:model.defer="form.type_of_problem" name="type_of_problem"
                             class="block w-full mt-1 text-sm @error('form.case') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="Type Problem" />
-                            @error('form.type_of_problem')
+                        @error('form.type_of_problem')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
-                            @enderror
+                        @enderror
                     </label>
                 </div>
             </div>
@@ -204,10 +220,9 @@
                 <textarea id="summernote" wire:model.defer="form.description"
                     class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                     rows="8" placeholder="Describe Your Problem..."></textarea>
-                    @error('form.description')
+                @error('form.description')
                     <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
-                    @enderror
+                @enderror
             </div>
             <hr class="border border-gray-400   my-5">
 
@@ -215,13 +230,12 @@
             <div class="flex flex-col   gap-6 my-8 mb-5  lg:grid-cols-2 md:grid-cols-1   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.personal_id"
+                        <input type="text" wire:model.defer="form.personal_id" name="personal_id"
                             class="block w-full mt-1 text-sm @error('form.personal_id') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="Personal id" />
-                            @error('form.personal_id')
+                        @error('form.personal_id')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
-                            @enderror
+                        @enderror
                     </label>
                 </div>
                 <div class="w-full">
@@ -248,8 +262,7 @@
 
                     </div>
                     @error('form.file_image')
-                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-
+                        <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -261,8 +274,6 @@
                     submit
                 </button>
             </div>
-          
-
 
 
 

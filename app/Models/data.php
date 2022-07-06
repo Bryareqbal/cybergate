@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class data extends Model
 {
-    protected $table = 'datas';
     protected $guarded = [];
 
     protected $casts = ["date" => "datetime", "links" => "array"];

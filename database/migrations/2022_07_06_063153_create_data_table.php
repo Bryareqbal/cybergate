@@ -21,7 +21,7 @@ return new class extends Migration {
 
             $table->string('phone', 20)->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->string('gender', 20); //male and female and other
+            $table->string('gender', 20)->nullable(); //male and female and other
             $table->string('region', 30)->default(null);
             $table->string('city', 30)->default(null);
             $table->string('state_address', 30)->default(null);

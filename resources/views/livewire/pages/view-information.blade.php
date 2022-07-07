@@ -53,7 +53,8 @@
                         <h5 class="text-sm text-gray-500 capitalize">{{ $case->fullname }}</h5>
                         <div class="flex mt-4 space-x-3 lg:mt-6">
                             <a href="{{ route('details',$case->id) }}"
-                                class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "><i
+                                class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800
+                                 focus:ring-4 focus:outline-none focus:ring-blue-300 "><i
                                     class="fa-solid fa-eye"></i></a>
                             <a href="#"
                                 class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"><i

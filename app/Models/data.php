@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class data extends Model
 {
     protected $guarded = [];
+
     protected $table="data";
     protected $casts = ["date" => "datetime", "links" => "array"];
 
@@ -17,4 +18,7 @@ class data extends Model
         return   asset('/uploads/personalImages/'.$this->personal_image.'');
     }
 
+    public function getAttachedFileAttribute(){
+        return   asset('/uploads/fileImages/'.$this->file_image.'');
+    }
 }

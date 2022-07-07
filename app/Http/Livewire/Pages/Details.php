@@ -14,7 +14,6 @@ class Details extends Component
     }
     public function render()
     {
-
         return view('livewire.pages.details')->extends('layouts.layout',["title" => "details"]);
     }
 }

@@ -128,7 +128,7 @@
                 <div class="text-sm">
                     <input type="text" wire:model.defer="form.state_address" name="state_address"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                        placeholder="State Address" />
+                        placeholder="street Address" />
 
                 </div>
                 <div class="w-full ">

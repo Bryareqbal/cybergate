@@ -34,6 +34,7 @@ return new class extends Migration {
             $table->integer('user_id');
             $table->string('file_image')->nullable();
             $table->string('personal_image')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

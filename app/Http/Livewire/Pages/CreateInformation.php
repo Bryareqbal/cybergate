@@ -73,7 +73,7 @@ class CreateInformation extends Component
         $orginalFileImageName  = time() . "." . $orginalFileImageExt;
 
         $thumpPersonalImage = Image::make($orginalPersonalImage)->fit(300, 300);
-        $thumpFileImage = Image::make($orginalFileImage)->fit(300, 300);
+        $thumpFileImage = Image::make($orginalFileImage);
 
         if ($orginalPersonalImage && $orginalFileImage) {
             $data = new data();
@@ -95,8 +95,8 @@ class CreateInformation extends Component
             $data->file_image = $orginalFileImageName;
             $data->personal_image = $orginalPersonalImageName;
             $data->personal_id = $this->form["personal_id"];
-            $thumpPersonalImage->save('uploads/personalImages/'.$orginalPersonalImageName, 30);
-            $thumpFileImage->save('uploads/fileImages/'.$orginalFileImageName, 30);
+            $thumpPersonalImage->save('uploads/personalImages/'.$orginalPersonalImageName, 60);
+            $thumpFileImage->save('uploads/fileImages/'.$orginalFileImageName, 60);
             $data->save();
         }
         $this->reset('form');

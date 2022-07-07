@@ -44,7 +44,7 @@
             <h1 class="text-gra-900 capitalize text-center text-4xl font-semibold">Adding Information</h1>
         </div>
 
-        <form wire:submit.prevent="saveData" enctype="multipart/form-data">
+        <form class="space-y-5  " wire:submit.prevent="saveData" enctype="multipart/form-data">
             <div class="">
                 <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 @error('form.personal_image') border-red-500 @enderror border-dashed rounded-md"
                     style="max-width: 300px">
@@ -214,16 +214,7 @@
                     </label>
                 </div>
             </div>
-            <div class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
-                    problem</span>
-                <textarea id="summernote" wire:model.defer="form.description"
-                    class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                    rows="8" placeholder="Describe Your Problem..."></textarea>
-                @error('form.description')
-                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-                @enderror
-            </div>
+
             <hr class="border border-gray-400   my-5">
 
 
@@ -267,13 +258,33 @@
                 </div>
 
             </div>
+            <div class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
+                    problem</span>
+                <textarea id="summernote" wire:model.defer="form.description"
+                    class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
+                    rows="8" placeholder="Describe Your Problem..."></textarea>
+                @error('form.description')
+                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+                @enderror
+            </div>
 
-            <div class="flex justify-center items-center mb-12 ">
+
+
+        @if (session()->has('message'))
+        <div class="lg:max-w-lg items-center bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12" role="alert">
+            the information has been added
+        </div>
+        @endif
+
+
+            <div class="flex justify-center items-center   ">
                 <button type="submit"
-                    class=" capitalize my-3 mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    class=" capitalize my-3 mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     submit
                 </button>
             </div>
+
 
 
 

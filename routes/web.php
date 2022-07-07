@@ -6,7 +6,6 @@ use App\Http\Livewire\pages\ViewInformation;
 use App\Http\Livewire\pages\CreateInformation;
 use App\Http\Livewire\Pages\Reports;
 use App\Http\Livewire\Users\Index;
-
 Route::get('/', function () {
     return view('welcome');
 });

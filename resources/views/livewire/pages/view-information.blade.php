@@ -44,13 +44,13 @@
     </div>
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
-            @for ($i = 0; $i <= 7; $i++)
+            @foreach ($cases as $case)
                 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
                     <div class="flex flex-col items-center pb-3">
                         <img class="mb-3 w-2/3 my-3 aspect-square object-cover object-center rounded-md"
-                            src=" {{ asset('assets/images/user.jpg') }}" alt="Bonnie image">
-                        <h5 class="mb-1 text-xl font-medium text-gray-900">Bonnie Green</h5>
-                        <span class="text-sm text-gray-500">Visual Designer</span>
+                            src=" {{ $case->avatar }}" alt="Bonnie image">
+                        <h5 class="mb-1 text-xl font-medium text-gray-900 capitalize">{{ $case->fullname }}</h5>
+                        <span class="text-sm text-gray-500">{{ $case->case }}</span>
                         <div class="flex mt-4 space-x-3 lg:mt-6">
                             <a href="#"
                                 class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "><i
@@ -64,8 +64,7 @@
                         </div>
                     </div>
                 </div>
-            @endfor
-
+           @endforeach
 
         </div>
     </div>

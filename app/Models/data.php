@@ -10,4 +10,11 @@ class data extends Model
     protected $guarded = [];
 
     protected $casts = ["date" => "datetime", "links" => "array"];
+
+
+
+    public function getAvatarAttribute(){
+        return   asset('/uploads/personalImages/'.$this->personal_image.'');
+    }
+
 }

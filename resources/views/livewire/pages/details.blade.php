@@ -20,11 +20,7 @@
                                 <div class="flex items-center space-x-3  ">
                                     <i class="text-xl fa-solid fa-envelope"></i>
 
-<<<<<<< HEAD
                                 <span class=" text-gray-900 capitalize">{{ $case->email ?: "No email" }}</span>
-=======
-                                    <span class=" text-gray-900 capitalize">{{ $case->email }}</span>
->>>>>>> fe37fd4b9095f2b7533e3d81b404fd209bbfe4a2
 
                                 </div>
                             @endif
@@ -34,7 +30,6 @@
                                 <span class=" text-gray-900 capitalize">{{ $case->phone ?: "No phone " }}</span>
 
                             </div>
-<<<<<<< HEAD
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-calendar"></i>
                                 <span class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: "No Date of Birth"}} </span>
@@ -46,33 +41,10 @@
                                 <span class=" text-gray-900 capitalize">{{ $case->gender  }}</span>
 
                             </div>
-=======
-                            @if ($case->date_of_birth)
-                                <div class="flex items-center space-x-3  my-2 ">
-                                    <i class="text-xl fa-solid fa-calendar"></i>
-                                    <span class=" text-gray-900 capitalize">{{ $case->date_of_birth }}</span>
-
-                                </div>
-                            @endif
-                            @if ($case->gender)
-                                <div class="flex items-center space-x-3  my-2 ">
-                                    <i class="text-xl fa-solid fa-mars-and-venus"></i>
-                                    <span class=" text-gray-900 capitalize">{{ $case->gender }}</span>
->>>>>>> fe37fd4b9095f2b7533e3d81b404fd209bbfe4a2
-
-                                </div>
-                            @endif
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl  fa-solid fa-location-dot"></i>
-<<<<<<< HEAD
                                 <span class=" text-gray-900 capitalize">{{ $case->region ?:"No region" }} , {{ $case->city ?: "No city" }} ,
                                     {{ $case->state_address ?:"No State address" }} , {{ $case->quarter_address ?: "No quarter address" }}</span>
-=======
-                                <span class=" text-gray-900 capitalize">{{ $case->region ?: 'no region' }} ,
-                                    {{ $case->city ?: 'no city' }} ,
-                                    {{ $case->state_address ?: 'no state address' }} ,
-                                    {{ $case->quarter_address ?: 'no quarter address' }}</span>
->>>>>>> fe37fd4b9095f2b7533e3d81b404fd209bbfe4a2
 
                             </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Models\city;
 use App\Models\data;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -11,6 +12,10 @@ use Image;
 class CreateInformation extends Component
 {
     use WithFileUploads;
+
+
+    public $ShowModel = false;
+
     public $form = [
         "fullname" => "",
         "email" => "",
@@ -61,8 +66,10 @@ class CreateInformation extends Component
         "form.personal_image" => "Personal Image",
         "form.personal_id" => "Personal ID",
     ];
+
     public function saveData()
     {
+
         $this->validate();
         $orginalPersonalImage = $this->form["personal_image"];
         $orginalFileImage = $this->form["file_image"];
@@ -103,8 +110,25 @@ class CreateInformation extends Component
         session()->flash('message', ' your information has been added');
     }
 
+
+
+    public $city;
+
+    public function SaveCities(){
+        $this->validate([
+            "city" => "required|max:100|unique:cities,name",
+        ]);
+        $city = new city();
+        $city->name = $this->city;
+        $city->save();
+        $this->reset('city');
+        session()->flash('message', ' your city has been added');
+        $this->ShowModel=false;
+    }
+
     public function render()
     {
-        return view('livewire.pages.create-information')->extends('layouts.layout', ['title' => 'Adding Information']);
+         $cities = city::latest()->get();
+        return view('livewire.pages.create-information',compact('cities'))->extends('layouts.layout', ['title' => 'Adding Information']);
     }
 }

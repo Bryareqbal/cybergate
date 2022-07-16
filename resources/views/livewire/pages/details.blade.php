@@ -52,8 +52,8 @@
 
                         <div class=" items-center ">
                             <h1 class="text-2xl font-bold mb-2 capitalize">{{ $case->case }}</h1>
-                            <p class="text-justify">
-                                {{ $case->description ?: 'no description' }}
+                            <p class="flex justify-start items-start">
+                                {!! $case->description  ?: "No description" !!}
                             </p>
                         </div>
 

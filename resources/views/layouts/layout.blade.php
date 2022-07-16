@@ -15,6 +15,8 @@
     </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
     @livewireStyles
 </head>
 
@@ -60,26 +62,17 @@
 
             </div>
         </footer>
+
     </div>
-    <script>
-        $('#summernote').summernote({
-            placeholder: 'please! write about your problem.',
-            tabsize: 2,
-            height: 200,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['view', ['fullscreen', 'codeview']]
-            ]
-        });
-    </script>
+
+
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     @livewireScripts
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+
+
+
+
 
 </body>
 

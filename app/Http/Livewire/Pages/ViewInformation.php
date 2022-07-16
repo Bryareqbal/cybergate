@@ -10,6 +10,20 @@ class ViewInformation extends Component
 {
     use WithPagination;
 
+    public $caseId;
+    public $state;
+    public $notes;
+
+
+
+    public function CompletedStatus($DataId){
+        $this->caseId = $DataId;
+        dd($this->notes,$this->state);
+    }
+
+
+
+
     public function render()
     {
         $cases=Data::latest()->paginate(10);

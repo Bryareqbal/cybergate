@@ -19,31 +19,31 @@
                             <div class="flex items-center space-x-3  ">
                                 <i class="text-xl fa-solid fa-envelope"></i>
 
-                                <span class=" text-gray-900 capitalize">{{ $case->email }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->email ?: "No email" }}</span>
 
                             </div>
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-phone"></i>
 
-                                <span class=" text-gray-900 capitalize">{{ $case->phone }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->phone ?: "No phone " }}</span>
 
                             </div>
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-calendar"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->date_of_birth }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: "No Date of Birth"}} </span>
 
                             </div>
 
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-mars-and-venus"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->gender }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->gender  }}</span>
 
                             </div>
 
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl  fa-solid fa-location-dot"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->region }} , {{ $case->city }} ,
-                                    {{ $case->state_address }} , {{ $case->quarter_address }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->region ?:"No region" }} , {{ $case->city ?: "No city" }} ,
+                                    {{ $case->state_address ?:"No State address" }} , {{ $case->quarter_address ?: "No quarter address" }}</span>
 
                             </div>
 

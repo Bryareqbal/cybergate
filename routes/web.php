@@ -7,6 +7,7 @@ use App\Http\Livewire\pages\CreateInformation;
 use App\Http\Livewire\Pages\Reports;
 use App\Http\Livewire\Users\Index;
 use App\Http\Livewire\Pages\Details;
+use App\Http\Livewire\Pages\EditInformation;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,17 +23,16 @@ Route::middleware([
 
 
     Route::get('/view_information/{id}', Details::class)->name('details');
+    Route::get("/edit-information/{id}", EditInformation::class)->name('edit-information');
 
     Route::middleware('asaysh');
     Route::middleware('isSuperAdmin')->group(function () {
         Route::get('/reports', Reports::class)->name('reports');
         Route::get('/users', Index::class)->name('users');
-
     });
 
     Route::middleware('viewingInformation')->group(function () {
         Route::get('/view_information', ViewInformation::class)->name('view_information');
-
     });
 
     Route::get('/dashboard', Dashboard::class)->name('root');

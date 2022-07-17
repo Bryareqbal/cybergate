@@ -19,23 +19,23 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::middleware('addingInformation')->get('/adding_information', CreateInformation::class)->name('adding_information');
+    Route::middleware(['addingInformation'])->group(function () {
+        Route::get('/adding_information', CreateInformation::class)->name('adding_information');
+    });
 
+    Route::middleware(['viewInformation'])->group(function () {
+        Route::get('/view_information', ViewInformation::class)->name('view_information');
+        Route::get('/view_information/{id}', Details::class)->name('details');
+    });
 
-    Route::get('/view_information/{id}', Details::class)->name('details');
-    Route::get("/edit-information/{id}", EditInformation::class)->name('edit-information');
-
-    Route::middleware('asaysh');
-    Route::middleware('isSuperAdmin')->group(function () {
+    Route::middleware("isSuperadmin")->group(function () {
+        Route::get("/edit_information/{id}", EditInformation::class)->name('edit-information');
         Route::get('/reports', Reports::class)->name('reports');
         Route::get('/users', Index::class)->name('users');
     });
 
-    Route::middleware('viewingInformation')->group(function () {
-        Route::get('/view_information', ViewInformation::class)->name('view_information');
-    });
-
     Route::get('/dashboard', Dashboard::class)->name('root');
+
     Route::get('/dashboard1', function () {
         return view('dashboard');
     })->name('dashboard');

@@ -5,7 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\addingInformation;
 use App\Http\Middleware\asaysh;
 use App\Http\Middleware\isSuperAdmin;
-use App\Http\Middleware\viewingInformation;
+use App\Http\Middleware\viewInformation;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,8 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         "addingInformation" => addingInformation::class,
-        "viewingInformation" => viewingInformation::class,
-        "isSuperAdmin" => isSuperAdmin::class,
-        "asaysh" => asaysh::class,
+        "viewInformation" => viewInformation::class,
+        "isSuperadmin" => isSuperAdmin::class,
     ];
 }

@@ -25,6 +25,9 @@ Route::middleware([
 
     Route::middleware(['viewInformation'])->group(function () {
         Route::get('/view_information', ViewInformation::class)->name('view_information');
+    });
+
+    Route::middleware(['viewInformationDetails'])->group(function () {
         Route::get('/view_information/{id}', Details::class)->name('details');
     });
 
@@ -35,9 +38,6 @@ Route::middleware([
     });
 
     Route::get('/dashboard', Dashboard::class)->name('root');
-    // slaw
-    // bashm
-    //slaw2
     Route::get('/dashboard1', function () {
         return view('dashboard');
     })->name('dashboard');

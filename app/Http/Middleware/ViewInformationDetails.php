@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class viewInformation
+class ViewInformationDetails
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,20 @@ class viewInformation
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Gate::allows("isCyber") || Gate::allows("isSuperadmin")) {
+        $data = data::find($request->route()->parameters()['id']);
+
+        if (Gate::allows("isAsaysh") && $data->status === null) {
             return $next($request);
         }
+
+        if ((Gate::allows("isCyber") && $data->status === "approved")) {
+            return $next($request);
+        }
+
+        if (Gate::allows("isSuperadmin")) {
+            return $next($request);
+        }
+
         return redirect('/dashboard')->withErrors([
             'message' => 'You are not authorized to access this page.'
         ]);

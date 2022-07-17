@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Pages;
 
-use Livewire\Component;
 use App\Models\Data;
+use App\Models\Cyber;
+use Livewire\Component;
 use Livewire\WithPagination;
+
 
 class ViewInformation extends Component
 {
@@ -15,10 +17,27 @@ class ViewInformation extends Component
     public $notes;
 
 
-
     public function CompletedStatus($DataId){
+        $find_data_id=Data::FindOrFail($DataId);
+        if($this->state === true){
+            $find_data_id->update([
+                'status' => "Solved",
+            ]);
+        }else{
+            $find_data_id->update([
+                'status' => "Not Solved",
+            ]);
+        }
         $this->caseId = $DataId;
-        dd($this->notes,$this->state);
+        $cyber =new Cyber();
+        $cyber->data_id = $DataId;
+        $cyber->user_id = auth()->user()->id;
+        $cyber->note = $this->notes;
+        $cyber->save();
+        $this->reset(['notes']);
+        $this->caseId= null;
+        session()->flash('message', 'Data has been completed');
+
     }
 
 

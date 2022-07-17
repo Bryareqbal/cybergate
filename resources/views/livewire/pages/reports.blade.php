@@ -167,12 +167,12 @@
                     <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-left">name</th>
+                                <th class="py-3 px-6 text-left">fullname</th>
                                 <th class="py-3 px-6 text-center">email</th>
                                 <th class="py-3 px-6 text-center">created at</th>
                                 <th class="py-3 px-6 text-center">last updated</th>
                                 <th class="py-3 px-6 text-center">User</th>
-                                <th class="py-3 px-6 text-center">Is Approved? </th>
+                                <th class="py-3 px-6 text-center">Is Approved</th>
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
@@ -235,17 +235,11 @@
                                     </td>
 
 
-                                    <td class="py-3 px-6 text-center">
-                                        <div class="flex item-center justify-around">
-                                            <a href="/user/profile"
-                                                class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </a>
-                                            <a href="/user/profile"
-                                                class="w-4 mr-2 transform text-yellow-400 hover:text-yellow-500 hover:scale-110">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
-                                        </div>
+                                    <td class="py-3 px-6 text-center  hover:scale-110">
+                                        <a href=""
+                                        class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                     </td>
                                 </tr>
                             @endfor

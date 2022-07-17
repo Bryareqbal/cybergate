@@ -6,6 +6,7 @@ use App\Http\Middleware\addingInformation;
 use App\Http\Middleware\asaysh;
 use App\Http\Middleware\isSuperAdmin;
 use App\Http\Middleware\viewInformation;
+use App\Http\Middleware\ViewInformationDetails;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -70,5 +71,6 @@ class Kernel extends HttpKernel
         "addingInformation" => addingInformation::class,
         "viewInformation" => viewInformation::class,
         "isSuperadmin" => isSuperAdmin::class,
+        "viewInformationDetails" => ViewInformationDetails::class,
     ];
 }

@@ -17,7 +17,7 @@ class addingInformation
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Gate::allows('isSuperadmin') || Gate::allows("isCreater")) {
+        if (Gate::allows('isSuperadmin') || Gate::allows("isCreator")) {
             return $next($request);
         }
 

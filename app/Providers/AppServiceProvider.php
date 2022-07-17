@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
             return Auth::user()->permission === "cyber";
         });
 
-        Gate::define("isCreater", function () {
-            return Auth::user()->permission === "creater";
+        Gate::define("isCreator", function () {
+            return Auth::user()->permission === "creator";
         });
 
         Gate::define("isAsaysh", function () {

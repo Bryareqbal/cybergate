@@ -36,6 +36,7 @@ Route::middleware([
 
     Route::get('/dashboard', Dashboard::class)->name('root');
     // slaw
+    // bashm
     Route::get('/dashboard1', function () {
         return view('dashboard');
     })->name('dashboard');

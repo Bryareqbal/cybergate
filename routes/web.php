@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Pages\Asaish;
 use App\Http\Livewire\pages\ViewInformation;
 use App\Http\Livewire\pages\CreateInformation;
 use App\Http\Livewire\Pages\Reports;
@@ -22,6 +23,8 @@ Route::middleware([
     Route::middleware(['addingInformation'])->group(function () {
         Route::get('/adding_information', CreateInformation::class)->name('adding_information');
     });
+    Route::get('/Asaish', Asaish::class)->name('Asaish');
+
 
     Route::middleware(['viewInformation'])->group(function () {
         Route::get('/view_information', ViewInformation::class)->name('view_information');

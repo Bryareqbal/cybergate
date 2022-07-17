@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </a>
-            <div class="w-full  p-2  cursor-pointer opacity-80">
+            <a href="{{ route('Asaish') }}" class="w-full  p-2  cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg
                  duration-300 hover:shadow-2xl bg-gradient-to-br from-indigo-50 to-indigo-100">
@@ -115,7 +115,7 @@
 
                     </div>
                 </div>
-            </div>
+            </a>
 
             <form class="w-full p-2 cursor-pointer opacity-80" method="POST" action="{{ route('logout') }}">
                 @csrf

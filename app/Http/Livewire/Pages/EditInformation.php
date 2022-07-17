@@ -80,9 +80,9 @@ class EditInformation extends Component
         if ($data->save()) {
             $this->form = $data;
             $this->form['links'] = json_decode($this->form->links);
-            return session()->flash("form_updated", "From Updated Successfuly");
+            return session()->flash("form_updated", "the form has been saved successfully");
         } else {
-            return session()->flash("form_not_updated", "From not Updated Successfuly");
+            return session()->flash("form_not_updated", "the form has not been saved");
         }
     }
 

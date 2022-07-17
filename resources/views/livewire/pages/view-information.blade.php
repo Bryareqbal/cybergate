@@ -43,11 +43,14 @@
     <div>
         <h1 class="text-blue-900 text-4xl font-bold text-center">Documents</h1>
     </div>
+    @if (session()->has('message'))
+            <div class="container mx-auto  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+            {{ session('message') }}
+            </div>
+    @endif
 
 
     @if ($cases->IsNotEmpty())
-
-
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-stretch">
             @foreach ($cases as $case)
@@ -61,7 +64,7 @@
                         <a href="{{ route('details', $case->id) }}" class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800
                                  focus:ring-4 focus:outline-none focus:ring-blue-300 "><i
                                 class="fa-solid fa-eye"></i></a>
-                        <a
+                        <a href="{{ route('edit-information',$case->id) }}"
                             class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"><i
                                 class="fa-solid fa-pen"></i></a>
                         <a wire:click.prevent="$set('caseId','{{ $case->id }}')" class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center bg-green-500 text-white rounded-lg border
@@ -101,7 +104,6 @@
                     <h3 class="mb-4 text-xl font-medium text-gray-900 ">write your note about this case (Solved or
                         not ?) </h3>
                     <div class="space-y-6">
-
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
                                 <input wire:model.defer="state" type="checkbox"
@@ -115,14 +117,13 @@
                                 rows="8" placeholder="Describe Your Problem..." autofocus></textarea>
 
                         </div>
-
                         <div class="flex space-x-2 px-2">
                             <button wire:click.prevent="$set('caseId',null)" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
                                           focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 data-modal-toggle="authentication-modal">Close</button>
                             <button id="submit" wire:click.prevent="CompletedStatus('{{ $caseId }}')" type="button"
                                 class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none
-                                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Solved</button>
+                                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Done</button>
                         </div>
 
                     </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cyber extends Model
 {
-    use HasFactory;
+    protected $table="cybers";
 
     protected $fillable = [
         'data_id',

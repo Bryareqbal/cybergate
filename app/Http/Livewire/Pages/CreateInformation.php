@@ -69,7 +69,6 @@ class CreateInformation extends Component
 
     public function saveData()
     {
-
         $this->validate();
         $orginalPersonalImage = $this->form["personal_image"];
         $orginalFileImage = $this->form["file_image"];
@@ -114,7 +113,8 @@ class CreateInformation extends Component
 
     public $city;
 
-    public function SaveCities(){
+    public function SaveCities()
+    {
         $this->validate([
             "city" => "required|max:100|unique:cities,name",
         ]);
@@ -128,7 +128,7 @@ class CreateInformation extends Component
 
     public function render()
     {
-         $cities = city::latest()->get();
-        return view('livewire.pages.create-information',compact('cities'))->extends('layouts.layout', ['title' => 'Adding Information']);
+        $cities = city::latest()->get();
+        return view('livewire.pages.create-information', compact('cities'))->extends('layouts.layout', ['title' => 'Adding Information']);
     }
 }

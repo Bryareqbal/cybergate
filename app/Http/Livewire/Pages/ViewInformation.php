@@ -7,7 +7,6 @@ use App\Models\Cyber;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-
 class ViewInformation extends Component
 {
     use WithPagination;
@@ -17,13 +16,14 @@ class ViewInformation extends Component
     public $notes;
 
 
-    public function CompletedStatus($DataId){
-        $find_data_id=Data::FindOrFail($DataId);
-        if($this->state === true){
+    public function CompletedStatus($DataId)
+    {
+        $find_data_id = Data::FindOrFail($DataId);
+        if ($this->state === true) {
             $find_data_id->update([
                 'status' => "Solved",
             ]);
-        }else{
+        } else {
             $find_data_id->update([
                 'status' => "Not Solved",
             ]);
@@ -37,7 +37,6 @@ class ViewInformation extends Component
         $this->reset(['notes']);
         $this->caseId= null;
         session()->flash('message', 'Data has been completed');
-
     }
 
 
@@ -45,7 +44,7 @@ class ViewInformation extends Component
 
     public function render()
     {
-        $cases=Data::latest()->paginate(10);
-        return view('livewire.pages.view-information',compact('cases'))->extends('layouts.layout', ['title' => 'View Information']);
+        $cases=Data::where("status", "approved")->latest()->paginate(10);
+        return view('livewire.pages.view-information', compact('cases'))->extends('layouts.layout', ['title' => 'View Information']);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\addingInformation;
-use App\Http\Middleware\asaysh;
+use App\Http\Middleware\Asaysh;
 use App\Http\Middleware\isSuperAdmin;
 use App\Http\Middleware\viewInformation;
 use App\Http\Middleware\ViewInformationDetails;
@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         "viewInformation" => viewInformation::class,
         "isSuperadmin" => isSuperAdmin::class,
         "viewInformationDetails" => ViewInformationDetails::class,
+        "asaysh" => Asaysh::class,
     ];
 }

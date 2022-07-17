@@ -23,7 +23,10 @@ Route::middleware([
     Route::middleware(['addingInformation'])->group(function () {
         Route::get('/adding_information', CreateInformation::class)->name('adding_information');
     });
-    Route::get('/Asaish', Asaish::class)->name('Asaish');
+
+    Route::middleware("asaysh")->group(function () {
+        Route::get('/Asaish', Asaish::class)->name('Asaish');
+    });
 
 
     Route::middleware(['viewInformation'])->group(function () {

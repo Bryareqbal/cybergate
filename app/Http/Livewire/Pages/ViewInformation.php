@@ -21,11 +21,11 @@ class ViewInformation extends Component
         $find_data_id = Data::FindOrFail($DataId);
         if ($this->state === true) {
             $find_data_id->update([
-                'status' => "Solved",
+                'status' => "solved",
             ]);
         } else {
             $find_data_id->update([
-                'status' => "Not Solved",
+                'status' => "not solved",
             ]);
         }
         $this->caseId = $DataId;
@@ -33,6 +33,7 @@ class ViewInformation extends Component
         $cyber->data_id = $DataId;
         $cyber->user_id = auth()->user()->id;
         $cyber->note = $this->notes;
+        $cyber->isSolved = $this->state ? true : false;
         $cyber->save();
         $this->reset(['notes']);
         $this->caseId= null;

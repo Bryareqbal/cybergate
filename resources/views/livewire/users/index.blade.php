@@ -41,7 +41,7 @@
 
 
     <div class=" px-2 container mx-auto rounded-lg my-6 space-y-10">
-        <div>
+        <div class="flex justify-between">
             <div
                 class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2">
                 <input wire:model="search" type="text"
@@ -51,6 +51,10 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
+            </div>
+            <div>
+                <button class="text-xl bg-green-500 hover:bg-green-600 px-3 py-2 text-white rounded"
+                    wire:click="$toggle('createUserModal')"><i class="fa-solid fa-plus"></i></button>
             </div>
         </div>
         @if ($users->IsNotEmpty())
@@ -131,7 +135,7 @@
                                         @if ($user->permission === 'superadmin') disabled @endIf
                                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input disabled:bg-gray-100">
                                         <option {{ $user->permission === 'superadmin' ? 'selected' : '' }}
-                                            value="superadmin">Superadmin</option>
+                                            value="superadmin" disabled>Superadmin</option>
                                         <option {{ $user->permission === 'creator' ? 'selected' : '' }}
                                             value="creator">Creator</option>
                                         <option {{ $user->permission === 'cyber' ? 'selected' : '' }} value="cyber">
@@ -156,8 +160,8 @@
 
                                         <a href="/user/profile"
                                             class="w-8 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
@@ -244,6 +248,86 @@
     </div>
 
     @endif
-
+    @if ($createUserModal)
+        <div wire:ignore.self tabindex="-1"
+            class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex bg-black/25"
+            aria-modal="true" role="dialog">
+            <div class="relative p-4 w-full max-w-sm h-full md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow-lg">
+                    <button wire:click.prevent="$set('createUserModal',null)" type="button"
+                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                        data-modal-toggle="authentication-modal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="py-6 px-6 lg:px-8">
+                        <h3 class="mb-4 text-2xl font-semibold text-green-500 capitalize ">creating new user</h3>
+                        <form method="POST" class="space-y-3" wire:submit.prevent="createUser">
+                            <div class="flex flex-col space-y-1">
+                                <label for="name">Name</label>
+                                <input wire:model.defer="newUserForm.name" type="text" id="name"
+                                    class="px-3 py-2 rounded ">
+                            </div>
+                            @error('newUserForm.name')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+                            <div class="flex flex-col space-y-1">
+                                <label for="email">Email</label>
+                                <input wire:model.defer="newUserForm.email" type="email" id="email"
+                                    class="px-3 py-2 rounded ">
+                            </div>
+                            @error('newUserForm.email')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+                            <div class="flex flex-col space-y-1">
+                                <label for="password">Password</label>
+                                <input wire:model.defer="newUserForm.password" type="password" id="password"
+                                    class="px-3 py-2 rounded ">
+                            </div>
+                            @error('newUserForm.password')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+                            <div class="flex flex-col space-y-1">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input wire:model.defer="newUserForm.confirm-password" type="password"
+                                    id="confirm-password" class="px-3 py-2 rounded ">
+                            </div>
+                            @error('newUserForm.confirm-password')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+                            <div class="flex flex-col space-y-1">
+                                <label for="role">role</label>
+                                <select id="role" class="px-3 py-2 rounded ">
+                                    <option value="none">None</option>
+                                    <option value="creator">Creator</option>
+                                    <option value="cyber">Cyber</option>
+                                    <option value="asaysh">Asaysh</option>
+                                </select>
+                            </div>
+                            <button class="px-3 py-2 bg-green-500 rounded text-white w-full">Create</button>
+                            @if (session()->has('success'))
+                                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
+                                    role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @elseif(session()->has('error'))
+                                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
+                                    role="alert">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+@endif
 
 </div>

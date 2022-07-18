@@ -16,5 +16,15 @@ class Asaysh extends Model
         'isApproved',
     ];
 
-    protected $table = 'asaysh';
+    protected $table = 'asayshes';
+
+    public function data()
+    {
+        return $this->belongsTo(data::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

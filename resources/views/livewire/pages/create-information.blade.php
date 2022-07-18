@@ -329,12 +329,12 @@
                     @enderror
                 </div>
             </div>
-            <div wire:ignore.self class="block mt-4 text-sm">
+            <div wire:ignore class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
                     problem</span>
 
                     <input id="x"  type="hidden" name="content">
-                    <trix-editor placeholder="type something ..."  wire:model.defer="form.description" name="content" input="x"></trix-editor>
+                    <trix-editor   wire:model="form.description" name="content" input="x"></trix-editor>
 
                 @error('form.description')
                     <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>

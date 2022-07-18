@@ -128,7 +128,8 @@
 
                                 <td class="py-3 px-6 text-center">
                                     <select wire:change="SetPermission($event.target.value,{{ $user->id }})"
-                                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
+                                        @if ($user->permission === 'superadmin') disabled @endIf
+                                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input disabled:bg-gray-100">
                                         <option {{ $user->permission === 'superadmin' ? 'selected' : '' }}
                                             value="superadmin">Superadmin</option>
                                         <option {{ $user->permission === 'creator' ? 'selected' : '' }}

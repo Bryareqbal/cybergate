@@ -281,12 +281,13 @@
                 </div>
 
             </div>
-            <div class="block mt-4 text-sm">
+            <div wire:ignore.self class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
                     problem</span>
-                <textarea wire:model.defer="form.description"
-                    class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                    rows="8" placeholder="Describe Your Problem..."></textarea>
+
+
+                    <input id="x"  type="hidden" name="content">
+                    <trix-editor  wire:model.defer="form.description" name="content" input="x"></trix-editor>
                 @error('form.description')
                     <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                 @enderror

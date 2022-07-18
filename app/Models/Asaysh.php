@@ -16,5 +16,5 @@ class Asaysh extends Model
         'isApproved',
     ];
 
-    protected $table = 'asaysh';
+    protected $table = 'asayshes';
 }

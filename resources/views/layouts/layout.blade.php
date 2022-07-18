@@ -15,25 +15,29 @@
     </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
-
+    @if (Route::currentRouteName() === 'adding_information' || Route::currentRouteName() === 'edit-information')
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
+    @endif
     <style>
-        ::-webkit-scrollbar{
-           width:10px;
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        ::-webkit-scrollbar-track{
-           background: #edf2f7;
-           border-radius: 100vh;
+
+        ::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 100vh;
         }
-         ::-webkit-scrollbar-thumb{
-           background: #cbd5e0;
-           border-radius: 100vh;
-           border:3px solid #cbd5e0;
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 100vh;
+            border: 3px solid #cbd5e0;
         }
-         ::-webkit-scrollbar-thumb:hover{
-               background: #a0aec0;
-           }
-   </style>
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+    </style>
     @livewireStyles
 </head>
 
@@ -60,6 +64,7 @@
         </nav>
 
         <div class="container-fluid mx-aut mt-20 pb-20">
+
             @yield('content')
         </div>
 
@@ -84,7 +89,9 @@
 
 
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-    <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
+    @if (Route::currentRouteName() === 'adding_information' || Route::currentRouteName() === 'edit-information')
+        <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
+    @endif
 
     @livewireScripts
 

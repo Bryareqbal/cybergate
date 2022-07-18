@@ -14,4 +14,14 @@ class Cyber extends Model
         'user_id',
         'note',
     ];
+
+    public function data()
+    {
+        return $this->belongsTo(data::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

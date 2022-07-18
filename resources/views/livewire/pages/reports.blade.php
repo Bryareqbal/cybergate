@@ -41,46 +41,62 @@
         </nav>
         <div class="space-y-10">
 
+
             <h1 class="text-4xl text-center font-bold">
                 Report Information
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
-                <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
-                    <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
-                        placeholder="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                <div class="flex space-x-5">
+                    <div
+                        class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
+                        <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
+                            placeholder="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <label for="from">From: </label>
+                        <input type="date" id="from" class="rounded border-2 border-gray-200">
+                    </div>
+                    <div>
+                        <label for="to">To: </label>
+                        <input type="date" id="to" class="rounded border-2 border-gray-200">
+                    </div>
                 </div>
-
                 <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                     <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left">name</th>
+                                <th class="py-3 px-6 text-left">Case Title</th>
                                 <th class="py-3 px-6 text-center">email</th>
                                 <th class="py-3 px-6 text-center">created at</th>
                                 <th class="py-3 px-6 text-center">last updated</th>
-                                <th class="py-3 px-6 text-center">User</th>
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
 
-                            @for ($i = 0; $i < 30; $i++)
+                            @foreach ($datas as $data)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100 text-xl">
                                     <td class="py-3 px-6 text-left ">
                                         <div class="flex items-center">
 
-                                            <span class="">Hoshmand Kamal</span>
+                                            <span class="">{{ $data->fullname ?? 'no name' }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-6 text-left ">
+                                        <div class="flex items-center">
+
+                                            <span class="">{{ $data->case ?? 'no case title' }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center  ">
 
-                                        <span>hoshmandg900@gmail.com</span>
+                                        <span>{{ $data->email ?? 'no email' }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span class="flex justify-center ">
@@ -92,7 +108,7 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $data->created_at->format('d-m-Y') }}</span>
 
                                         </span>
 
@@ -109,17 +125,12 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $data->updated_at->format('d-m-Y') }}</span>
 
                                         </span>
 
 
 
-                                    </td>
-
-                                    <td class="py-3 px-6 text-center">
-
-                                        <span>Role Permissions</span>
                                     </td>
 
 
@@ -129,14 +140,10 @@
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
-                                            <a href="/user/profile"
-                                                class="w-4 mr-2 transform text-yellow-400 hover:text-yellow-500 hover:scale-110">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
-                            @endfor
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -152,43 +159,56 @@
                 Report Asaysh
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
-                <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
-                    <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
-                        placeholder="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                <div class="flex space-x-5">
+                    <div
+                        class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
+                        <input type="text"
+                            class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
+                            placeholder="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <label for="from">From: </label>
+                        <input type="date" id="from" class="rounded border-2 border-gray-200">
+                    </div>
+                    <div>
+                        <label for="to">To: </label>
+                        <input type="date" id="to" class="rounded border-2 border-gray-200">
+                    </div>
                 </div>
-
                 <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                     <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-left">name</th>
-                                <th class="py-3 px-6 text-center">email</th>
+                                <th class="py-3 px-6 text-left">case title</th>
+                                <th class="py-3 px-6 text-center">asaysh</th>
+                                <th class="py-3 px-6 text-center">Is Approved</th>
                                 <th class="py-3 px-6 text-center">created at</th>
                                 <th class="py-3 px-6 text-center">last updated</th>
-                                <th class="py-3 px-6 text-center">User</th>
-                                <th class="py-3 px-6 text-center">Is Approved? </th>
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
 
-                            @for ($i = 0; $i < 30; $i++)
+                            @foreach ($asayshes as $asaysh)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100 text-xl">
                                     <td class="py-3 px-6 text-left ">
                                         <div class="flex items-center">
 
-                                            <span class="">Hoshmand Kamal</span>
+                                            <span class="">{{ $asaysh->data->case }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center  ">
 
-                                        <span>hoshmandg900@gmail.com</span>
+                                        <span>{{ $asaysh->user->name }}</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+
+                                        <span>{{ $asaysh->isApproved ? 'Approved' : ' Disapproved' }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span class="flex justify-center ">
@@ -200,7 +220,7 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $asaysh->created_at->format('d-m-Y') }}</span>
 
                                         </span>
 
@@ -217,38 +237,23 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $asaysh->updated_at->format('d-m-Y') }}</span>
 
                                         </span>
 
 
 
                                     </td>
-
-                                    <td class="py-3 px-6 text-center">
-
-                                        <span>Role Permissions</span>
-                                    </td>
-                                    <td class="py-3 px-6 text-center">
-
-                                        <span>Approved</span>
-                                    </td>
-
-
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-around">
                                             <a href="/user/profile"
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
-                                            <a href="/user/profile"
-                                                class="w-4 mr-2 transform text-yellow-400 hover:text-yellow-500 hover:scale-110">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
-                            @endfor
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -264,41 +269,56 @@
                 Report Cyber
             </h1>
             <div class="container mx-auto rounded-lg my-6 space-y-10">
-                <div
-                    class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
-                    <input type="text" class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
-                        placeholder="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                <div class="flex space-x-5">
+                    <div
+                        class="rounded border-2 hover:border-blue-500 focus-within:border-blue-600 flex items-center max-w-fit pr-2 mx-auto md:mx-0">
+                        <input type="text"
+                            class="px-3 py-2 flex-1 border-none outline-none outline-hidden outline-0"
+                            placeholder="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <label for="from">From: </label>
+                        <input type="date" id="from" class="rounded border-2 border-gray-200">
+                    </div>
+                    <div>
+                        <label for="to">To: </label>
+                        <input type="date" id="to" class="rounded border-2 border-gray-200">
+                    </div>
                 </div>
                 <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                     <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-left">name</th>
-                                <th class="py-3 px-6 text-center">email</th>
+                                <th class="py-3 px-6 text-left">case title</th>
+                                <th class="py-3 px-6 text-center">cyber</th>
+                                <th class="py-3 px-6 text-center">Is solved?</th>
                                 <th class="py-3 px-6 text-center">created at</th>
                                 <th class="py-3 px-6 text-center">last updated</th>
-                                <th class="py-3 px-6 text-center">User</th>
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
 
-                            @for ($i = 0; $i < 30; $i++)
+                            @foreach ($cybers as $cyber)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100 text-xl">
                                     <td class="py-3 px-6 text-left ">
                                         <div class="flex items-center">
 
-                                            <span class="">Hoshmand Kamal</span>
+                                            <span class="">{{ $cyber->data->case }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center  ">
 
-                                        <span>hoshmandg900@gmail.com</span>
+                                        <span>{{ $cyber->user->name }}</span>
+                                    </td>
+                                    <td class="py-3 px-6 text-center">
+
+                                        <span>{{ $cyber->isSolved ?? 'none' }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span class="flex justify-center ">
@@ -310,7 +330,7 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $cyber->created_at->format('d-m-Y') }}</span>
 
                                         </span>
 
@@ -327,7 +347,7 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <span>{{ now()->format('d-m-Y') }}</span>
+                                            <span>{{ $cyber->updated_at->format('d-m-Y') }}</span>
 
                                         </span>
 
@@ -335,10 +355,7 @@
 
                                     </td>
 
-                                    <td class="py-3 px-6 text-center">
 
-                                        <span>Role Permissions</span>
-                                    </td>
 
 
                                     <td class="py-3 px-6 text-center">
@@ -347,14 +364,10 @@
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
-                                            <a href="/user/profile"
-                                                class="w-4 mr-2 transform text-yellow-400 hover:text-yellow-500 hover:scale-110">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
-                            @endfor
+                            @endforeach
 
                         </tbody>
                     </table>

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId("data_id")->constrained("data")->cascadeOnDelete();
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();
+            $table->boolean("isSolved");
             $table->text("note")->nullable();
             $table->timestamps();
         });

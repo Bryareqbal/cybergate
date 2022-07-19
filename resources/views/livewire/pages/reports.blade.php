@@ -253,7 +253,6 @@
                                     <th class="py-3 px-6 text-center">Is Approved</th>
                                     <th class="py-3 px-6 text-center">created at</th>
                                     <th class="py-3 px-6 text-center">last updated</th>
-                                    <th class="py-3 px-6 text-center">User</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -315,10 +314,7 @@
 
 
                                         </td>
-                                        <td class="py-3 px-6 text-center">
 
-                                            <span>Approved</span>
-                                        </td>
 
 
                                         <td  class="py-3 px-6 text-center  hover:scale-110">

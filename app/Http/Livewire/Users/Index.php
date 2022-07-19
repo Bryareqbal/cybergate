@@ -69,11 +69,11 @@ class Index extends Component
         $user->status = $this->newUserForm["status"];
         if ($user->save()) {
             $this->reset('newUserForm');
+            $this->createUserModal = false;
             return session()->flash("success", "User Created Successfuly");
         } else {
             return session()->flash("error", "User Not Created Successfuly");
         }
-        $this->createUserModal = false;
     }
 
 

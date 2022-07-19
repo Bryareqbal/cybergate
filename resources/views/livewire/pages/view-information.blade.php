@@ -43,10 +43,10 @@
         <h1 class="text-blue-900 text-4xl font-bold text-center">Documents</h1>
     </div>
     @if (session()->has('message'))
-        <div class="container mx-auto  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
-            role="alert">
-            {{ session('message') }}
-        </div>
+        <div class="container mx-auto  rounded mb-12 py-1  bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
+        role="alert">
+        {{ session('message') }}
+    </div>
     @endif
 
 
@@ -82,8 +82,11 @@
                     </div>
                 @endforeach
 
+
             </div>
+
         </div>
+
 
 
         @if ($caseId != null)
@@ -147,6 +150,12 @@
         </div>
 
     @endif
+    <div class=" flex  justify-center items-center mx-auto   " style="margin-bottom: 4rem">
+
+        {{ $cases->links() }}
+
+    </div>
+
 
 
 </div>

@@ -344,7 +344,7 @@
 
 
             @if (session()->has('message'))
-                <div class="lg:max-w-lg items-center bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12"
+                <div class="lg:max-w-lg items-center  py-1 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12"
                     role="alert">
                     the information has been added
                 </div>

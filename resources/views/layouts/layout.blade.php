@@ -50,6 +50,7 @@
                         <h1>CYBER GATE</h1>
                     </a>
                 </div>
+                @auth
                 <div class="group relative">
                     <button class="hidden">list</button>
                     <div class="space-x-3 text-center" id="#dropdown">
@@ -60,6 +61,7 @@
                         </span>
                     </div>
                 </div>
+                @endauth
             </div>
         </nav>
 

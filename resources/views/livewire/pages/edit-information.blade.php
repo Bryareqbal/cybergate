@@ -63,12 +63,12 @@
                         </div>
                     @endif
                     @if (session()->has('personal_image'))
-                        <div class="lg:max-w-lg items-center bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12"
+                        <div class="container mx-auto  rounded mb-12 py-1  bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
                             role="alert">
                             {{ session('personal_image') }}
                         </div>
                     @elseif (session()->has('personal_image_error'))
-                        <div class="lg:max-w-lg items-center bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-12"
+                        <div class="lg:max-w-lg items-center bg-red-100  py-1 border-l-4 border-red-500 text-red-700 p-4 mb-12"
                             role="alert">
                             {{ session('personal_image_error') }}
                         </div>
@@ -79,12 +79,12 @@
                 @enderror
             </div>
             @if (session()->has('form_updated'))
-                <div class="lg:max-w-lg items-center bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12"
+                <div class="lg:max-w-lg items-center bg-green-100  py-1 border-l-4 border-green-500 text-green-700 p-4 mb-12"
                     role="alert">
                     {{ session('form_updated') }}
                 </div>
             @elseif (session()->has('form_not_updated'))
-                <div class="lg:max-w-lg items-center bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-12"
+                <div class="lg:max-w-lg items-center bg-red-100  py-1 border-l-4 border-red-500 text-red-700 p-4 mb-12"
                     role="alert">
                     {{ session('form_not_updated') }}
                 </div>
@@ -296,7 +296,7 @@
 
 
             @if (session()->has('message'))
-                <div class="lg:max-w-lg items-center bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-12"
+                <div class="container mx-auto  rounded mb-12 py-1  bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
                     role="alert">
                     the information has been added
                 </div>

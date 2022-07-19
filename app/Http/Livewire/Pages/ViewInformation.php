@@ -16,6 +16,7 @@ class ViewInformation extends Component
     public $notes;
 
 
+
     public function CompletedStatus($DataId)
     {
         $find_data_id = Data::FindOrFail($DataId);
@@ -45,7 +46,7 @@ class ViewInformation extends Component
 
     public function render()
     {
-        $cases=Data::where("status", "approved")->latest()->paginate(10);
+        $cases=Data::where("status", "approved")->latest()->paginate(12);
         return view('livewire.pages.view-information', compact('cases'))->extends('layouts.layout', ['title' => 'View Information']);
     }
 }

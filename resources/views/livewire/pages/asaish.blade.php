@@ -43,7 +43,7 @@
         <h1 class="text-red-900 text-4xl font-bold text-center mb-3">Documents Asaish</h1>
     </div>
     @if (session()->has('message'))
-            <div class="container mx-auto  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+            <div class="container mx-auto  py-1  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
             {{ session('message') }}
             </div>
     @endif
@@ -119,6 +119,12 @@
     </div>
 
     @endif
+
+    <div class=" flex  justify-center items-center mx-auto   " style="margin-bottom: 4rem">
+
+        {{ $Data->links() }}
+
+    </div>
 
 
 </div>

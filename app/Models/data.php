@@ -21,4 +21,10 @@ class data extends Model
     public function getAttachedFileAttribute(){
         return   asset('/uploads/fileImages/'.$this->file_image.'');
     }
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query() :
+         static::where('fullname', 'LIKE', '%'.$search.'%');
+    }
 }

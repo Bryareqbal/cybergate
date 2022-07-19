@@ -51,21 +51,21 @@
                     </a>
                 </div>
                 @auth
-                <div class="group relative">
-                    <button class="hidden">list</button>
-                    <div class="space-x-3 text-center" id="#dropdown">
-                        <span
-                            class="text-lg font-semibold capitalize whitespace-nowrap">{{ Str::limit(Auth::user()->name, 10, '..') }}</span>
-                        <span>
-                            <i class="fa-solid fa-user text-2xl"></i>
-                        </span>
+                    <div class="group relative">
+                        <button class="hidden">list</button>
+                        <div class="space-x-3 text-center" id="#dropdown">
+                            <span
+                                class="text-lg font-semibold capitalize whitespace-nowrap">{{ Str::limit(Auth::user()->name, 10, '..') }}</span>
+                            <span>
+                                <i class="fa-solid fa-user text-2xl"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
                 @endauth
             </div>
         </nav>
 
-        <div class="container-fluid mx-aut mt-20 pb-20">
+        <div class="container-fluid mx-aut mt-20 pb-40">
 
             @yield('content')
         </div>

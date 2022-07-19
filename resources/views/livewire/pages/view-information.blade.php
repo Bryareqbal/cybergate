@@ -44,9 +44,9 @@
     </div>
     @if (session()->has('message'))
         <div class="container mx-auto  rounded mb-12 py-1  bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
-        role="alert">
-        {{ session('message') }}
-    </div>
+            role="alert">
+            {{ session('message') }}
+        </div>
     @endif
 
 

@@ -96,7 +96,7 @@
                     <label class="text-sm">
                         <input wire:model.defer="form.email" name="email"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="Email Address" />
+                            placeholder="Email Address (optional)" />
 
                     </label>
                 </div>
@@ -104,7 +104,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.phone" name="phone"
                             class="block w-full mt-1 @error('form.phone') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
-                            placeholder="phone number" />
+                            placeholder="Phone Number" />
                         @error('form.phone')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                         @enderror
@@ -112,9 +112,11 @@
                     </label>
                 </div>
                 <div class="w-full ">
-                    <label class="text-sm">
+                    <label
+                        class="text-sm space-x-3 flex items-center w-full mt-1 @error('form.date_of_birth') border-red-500 @enderror p-1.5 focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input">
+                        <span class="text-blackc font-semibold text">birthday: </span>
                         <input type="date" wire:model.defer="form.date_of_birth" name="date_of_birth"
-                            class="block w-full mt-1 @error('form.date_of_birth') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input" />
+                            class="border-none px-0 py-0" />
                         @error('form.date_of_birth')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                         @enderror
@@ -126,9 +128,9 @@
                     <select wire:model.defer="form.gender" name="gender"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
                         <option>--select gender--</option>
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="other">other</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
 
                 </div>
@@ -136,14 +138,14 @@
                 <div class="text-sm">
                     <input type="text" wire:model.defer="form.state_address" name="state_address"
                         class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                        placeholder="street Address" />
+                        placeholder="Street Address (optional)" />
 
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.region" name="region"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="Region " />
+                            placeholder="Region (optional)" />
 
                     </label>
                 </div>
@@ -220,7 +222,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.querter_address" name="querter_address"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="quarter Address" />
+                            placeholder="Quarter Address (optional)" />
 
                     </label>
                 </div>
@@ -235,7 +237,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.links.link1" name="links"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="links" />
+                            placeholder="Links (optional)" />
 
                     </label>
                 </div>
@@ -243,7 +245,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.links.link2"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="links" />
+                            placeholder="Links (optional)" />
 
                     </label>
                 </div>
@@ -251,7 +253,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.links.link3"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                            placeholder="links" />
+                            placeholder="Links (optional)" />
 
                     </label>
                 </div>
@@ -262,7 +264,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.case" name="case"
                             class="block w-full mt-1 text-sm @error('form.case') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
-                            placeholder="case" />
+                            placeholder="Case" />
                         @error('form.case')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                         @enderror
@@ -288,7 +290,7 @@
                     <label class="text-sm">
                         <input type="text" wire:model.defer="form.personal_id" name="personal_id"
                             class="block w-full mt-1 text-sm @error('form.personal_id') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
-                            placeholder="Personal id" />
+                            placeholder="Personal Id" />
                         @error('form.personal_id')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                         @enderror
@@ -333,8 +335,8 @@
                 <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
                     problem</span>
 
-                    <input id="x"  type="hidden" name="content">
-                    <trix-editor   wire:model="form.description" name="content" input="x"></trix-editor>
+                <input id="x" type="hidden" name="content">
+                <trix-editor wire:model="form.description" name="content" input="x"></trix-editor>
 
                 @error('form.description')
                     <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>

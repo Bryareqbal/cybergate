@@ -24,7 +24,7 @@ class ViewInformationDetails
             return $next($request);
         }
 
-        if ((Gate::allows("isCyber") && $data->status === "approved")) {
+        if ((Gate::allows("isCyber") && $data->status === "Approved")) {
             return $next($request);
         }
 

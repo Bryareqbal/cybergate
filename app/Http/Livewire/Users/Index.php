@@ -12,6 +12,7 @@ class Index extends Component
     public $limit=12;
     public $search;
     public $createUserModal = false;
+    public $disableModal = null;
     public $newUserForm = [
         "name" => "",
         "email" => "",
@@ -42,7 +43,7 @@ class Index extends Component
     public function ChangedStatus($userid)
     {
         $user=User::findorfail($userid);
-        $user->status=!$user->status;
+        $user->status = !$user->status;
         $user->save();
         session()->flash('message', ' your status has been changed');
         return redirect()->route('users');
@@ -72,6 +73,7 @@ class Index extends Component
         } else {
             return session()->flash("error", "User Not Created Successfuly");
         }
+        $this->createUserModal = false;
     }
 
 

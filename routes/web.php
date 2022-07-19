@@ -26,7 +26,7 @@ Route::middleware([
     });
 
     Route::middleware("asaysh")->group(function () {
-        Route::get('/Asaish', Asaish::class)->name('Asaish');
+        Route::get('/Asaysh', Asaish::class)->name('Asaish');
     });
 
 

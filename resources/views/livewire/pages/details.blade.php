@@ -20,42 +20,40 @@
                                 <div class="flex items-center space-x-3  ">
                                     <i class="text-xl fa-solid fa-envelope"></i>
 
-                                <span class=" text-gray-900 capitalize">{{ $case->email ?: "No email" }}</span>
+                                    <span class=" text-gray-900 capitalize">{{ $case->email ?: 'No email' }}</span>
 
                                 </div>
                             @endif
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-phone"></i>
 
-                                <span class=" text-gray-900 capitalize">{{ $case->phone ?: "No phone " }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->phone ?: 'No phone ' }}</span>
 
                             </div>
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-calendar"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: "No Date of Birth"}} </span>
+                                <span
+                                    class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: 'No Date of Birth' }}
+                                </span>
 
                             </div>
 
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-mars-and-venus"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->gender  }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->gender }}</span>
 
                             </div>
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl  fa-solid fa-location-dot"></i>
-                                <span class=" text-gray-900 capitalize">{{ $case->region ?:"No region" }} , {{ $case->city ?: "No city" }} ,
-                                    {{ $case->state_address ?:"No State address" }} , {{ $case->quarter_address ?: "No quarter address" }}</span>
+                                <span class=" text-gray-900 capitalize">{{ $case->region ?: 'No region' }} ,
+                                    {{ $case->city ?: 'No city' }} ,
+                                    {{ $case->state_address ?: 'No State address' }} ,
+                                    {{ $case->quarter_address ?: 'No quarter address' }}</span>
 
                             </div>
 
                         </div>
 
-                        <div class=" items-center ">
-                            <h1 class="text-2xl font-bold mb-2 capitalize">{{ $case->case }}</h1>
-                            <p class="flex justify-start items-start">
-                                {!! $case->description  ?: "No description" !!}
-                            </p>
-                        </div>
 
                         <div class="mb-12">
                             <h1 class="text-2xl  font-bold mb-3">Attached links</h1>
@@ -69,6 +67,21 @@
                             </ul>
                         </div>
 
+                        <div class=" items-center ">
+
+                            <h1 class="text-2xl font-bold capitalize">case: <span
+                                    class="font-semibold">{{ $case->case }}</span></h1>
+                            <h3 class="text-md mb-2 capitalize">type of problem: {{ $case->type_of_problem }}</h3>
+
+                        </div>
+
+                        <div>
+
+                            <h1 class="text-2xl font-bold capitalize">Descritpion</h1>
+                            <p class="flex justify-start items-start">
+                                {!! $case->description ?: 'No description' !!}
+                            </p>
+                        </div>
                         <div class="mb-12">
                             <h1 class="text-2xl  font-bold mb-3">Attached Image</h1>
                             <div class="w-1/2 mx-auto">
@@ -76,21 +89,6 @@
                                     alt="">
                             </div>
 
-                        </div>
-
-                        <div class="flex space-x-3 justify-center">
-                            <div>
-                                <button type="submit"
-                                    class=" capitalize my-3 mb-2 bg-white hover:bg-white text-black font-bold py-2 px-4 rounded border border-gray-400">
-                                    Edit
-                                </button>
-                            </div>
-                            <div>
-                                <button type="submit"
-                                    class=" capitalize my-3 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border border-green-500">
-                                    Done
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>

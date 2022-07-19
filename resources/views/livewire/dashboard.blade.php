@@ -89,9 +89,9 @@
                     <h1 class="text-3xl sm:text-4xl xl:text-2xl font-bold text-gray-700 mt-10 group-hover:text-gray-50">
                         Report</h1>
                     <div class="flex flex-row justify-between group-hover:text-gray-200 ">
-                        <p class="text-sm mt-1 text-gray-500">Current Data</p>
+                        <p class="text-sm mt-1 text-gray-500">Sections</p>
 
-                        <p class="text-sm mt-1 text-gray-500">12</p>
+                        <p class="text-sm mt-1 text-gray-500">3</p>
 
                     </div>
                 </div>

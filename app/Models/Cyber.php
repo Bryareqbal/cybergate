@@ -24,4 +24,6 @@ class Cyber extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 }

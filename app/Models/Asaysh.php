@@ -27,4 +27,9 @@ class Asaysh extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public static function search($search)
+    {
+        return empty($search) ? static::query() :
+         static::where('fullname', 'LIKE', '%'.$search.'%');
+    }
 }

@@ -42,16 +42,25 @@
     <div>
         <h1 class="text-blue-900 text-4xl font-bold text-center">Documents</h1>
     </div>
+
+    <div class="container mx-auto  flex flex-row justify-center">
+        <input wire:model="search"
+            class="lg:basis-1/3 md:basis-1/2 basis-1/2 pl-8 py-3 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
+            type="text" placeholder="Search..." aria-label="Search">
+    </div>
     @if (session()->has('message'))
         <div class="container mx-auto  rounded mb-12 py-1  bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
-        role="alert">
-        {{ session('message') }}
-    </div>
+            role="alert">
+            {{ session('message') }}
+        </div>
     @endif
+
+
 
 
     @if ($cases->IsNotEmpty())
         <div class="container mx-auto">
+
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-stretch">
                 @foreach ($cases as $case)
@@ -71,7 +80,7 @@
                                         class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"><i
                                             class="fa-solid fa-pen"></i></a>
                                 @endcan
-                                <a wire:click.prevent="$set('caseId','{{ $case->id }}')"
+                                <a wire:click="$set('caseId','{{ $case->id }}')"
                                     class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center bg-green-500 text-white rounded-lg border
                                  border-green-500  hover:bg-green-700 focus:ring-4 focus:outline-none ">
                                     <i class="fa-solid fa-check"></i>
@@ -86,6 +95,8 @@
             </div>
 
         </div>
+
+
 
 
 
@@ -121,17 +132,18 @@
                                     <label class="ml-2 text-sm font-medium text-gray-900 ">Sovled</label>
                                 </div>
                                 <div>
-                                    <textarea wire:model.defer="notes"
-                                        class="block w-full  text-sm focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
-                                        rows="8" placeholder="Describe Your Problem..." autofocus></textarea>
+
+                                        <input id="x" type="hidden" name="content">
+                                        <trix-editor rows="20" wire:model.defer="notes" name="content" input="x"></trix-editor>
+
 
                                 </div>
                                 <div class="flex space-x-2 px-2">
-                                    <button wire:click.prevent="$set('caseId',null)"
+                                    <button wire:click="$set('caseId',null)"
                                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
                                           focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                         data-modal-toggle="authentication-modal">Close</button>
-                                    <button id="submit" wire:click.prevent="CompletedStatus('{{ $caseId }}')"
+                                    <button id="submit" wire:click="CompletedStatus('{{ $caseId }}')"
                                         type="button"
                                         class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none
                                  focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Done</button>
@@ -155,6 +167,51 @@
         {{ $cases->links() }}
 
     </div>
+    <div wire:ignore.self id="extralarge-modal" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+        <div class="relative p-4 w-full max-w-7xl h-full md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow ">
+                <!-- Modal header -->
+                <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+                    <h3 class="text-xl font-medium text-gray-900 ">
+                        write your note about this case (Solved or not ?) </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                      dark:hover:text-white"
+                        data-modal-toggle="extralarge-modal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+
+                    <input id="x" type="hidden" name="content">
+                    <trix-editor rows="20" wire:model.defer="note" name="content" input="x"></trix-editor>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 ">
+                    <button data-modal-toggle="extralarge-modal" type="button"
+                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300
+                    dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Cancel
+                    </button>
+                    <button wire:click="CompletedStatus('{{ $caseId }}')" data-modal-toggle="extralarge-modal"  type="button"
+                        class="text-gray-500 bg-white
+                    hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5
+                     hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300">Submit</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

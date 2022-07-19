@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         "isSuperadmin" => isSuperAdmin::class,
         "viewInformationDetails" => ViewInformationDetails::class,
         "asaysh" => Asaysh::class,
+        "isActive" => \App\Http\Middleware\isActive::class,
     ];
 }

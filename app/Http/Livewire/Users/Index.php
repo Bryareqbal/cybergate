@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Users;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
 
 class Index extends Component
@@ -62,7 +63,7 @@ class Index extends Component
         $user = new User();
         $user->name = $this->newUserForm["name"];
         $user->email = $this->newUserForm["email"];
-        $user->password = $this->newUserForm["password"];
+        $user->password = Hash::make($this->newUserForm["password"]);
         $user->permission = $this->newUserForm["role"];
         $user->status = $this->newUserForm["status"];
         if ($user->save()) {

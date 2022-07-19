@@ -18,7 +18,8 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    "isActive"
 ])->group(function () {
     Route::middleware(['addingInformation'])->group(function () {
         Route::get('/adding_information', CreateInformation::class)->name('adding_information');

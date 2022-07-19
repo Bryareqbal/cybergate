@@ -50,7 +50,7 @@ class CreateInformation extends Component
         // "form.whgcase" => "required",
         "form.file_image" => "required|mimes:jpg,png|file|max:2048",
         "form.personal_image" => "required|mimes:jpg,png|file|max:2048",
-        "form.personal_id" => "required|min:11|max:15",
+        "form.personal_id" => "required|min:5|max:15",
     ];
 
     protected $validationAttributes = [

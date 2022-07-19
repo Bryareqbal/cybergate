@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
-    public $limit=10;
+    public $limit=12;
     public $search;
     public $createUserModal = false;
     public $newUserForm = [

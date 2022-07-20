@@ -25,6 +25,7 @@ class data extends Model
     public static function search($search)
     {
         return empty($search) ? static::query() :
-         static::where('fullname', 'LIKE', '%'.$search.'%');
+         static::where('fullname', 'LIKE', '%'.$search.'%')
+        ->orWhere('case', 'LIKE', '%'.$search.'%');
     }
 }

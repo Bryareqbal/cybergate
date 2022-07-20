@@ -14,6 +14,8 @@ class Asaish extends Component
 
     public $note;
 
+    public $search;
+
     public function DisApproved()
     {
         $find_data_id = Data::FindOrFail($this->caseId);
@@ -46,7 +48,7 @@ class Asaish extends Component
     }
     public function render()
     {
-        $Data=Data::where('status', null)->latest()->paginate(12);
+        $Data=Data::search($this->search)->where("status", null)->latest()->paginate(12);
         return view('livewire.pages.asaish', compact('Data'))->extends('layouts.layout', ['title' => 'Asaish']);
     }
 }

@@ -12,7 +12,7 @@ class Asaish extends Component
     use WithPagination;
     public $caseId;
 
-    public $note;
+    public $description;
 
     public $search;
 
@@ -22,14 +22,14 @@ class Asaish extends Component
         $DataAsayish=new Asaysh();
         $DataAsayish->data_id=$find_data_id->id;
         $DataAsayish->user_id=auth()->user()->id;
-        $DataAsayish->note=$this->note;
+        $DataAsayish->note=$this->description;
         $DataAsayish->isApproved=false;
         $find_data_id->status = 'Disapproved';
         $find_data_id->save();
         $DataAsayish->save();
         session()->flash('message', 'The case has been Disapproved');
         $this->caseId = null;
-        $this->note = null;
+        $this->description = null;
     }
     public function Approved()
     {
@@ -37,18 +37,19 @@ class Asaish extends Component
         $DataAsayish=new Asaysh();
         $DataAsayish->data_id=$find_data_id->id;
         $DataAsayish->user_id=auth()->user()->id;
-        $DataAsayish->note=$this->note;
+        $DataAsayish->note=$this->description;
         $DataAsayish->isApproved=true;
         $find_data_id->status = 'Approved';
         $find_data_id->save();
         $DataAsayish->save();
         session()->flash('message', 'The case has been Disapproved');
         $this->caseId = null;
-        $this->note = null;
+        $this->description = null;
     }
     public function render()
     {
         $Data=Data::search($this->search)->where("status", null)->latest()->paginate(12);
-        return view('livewire.pages.asaish', compact('Data'))->extends('layouts.layout', ['title' => 'Asaish']);
+        $asyash=Asaysh::get();
+        return view('livewire.pages.asaish', compact('Data','asyash'))->extends('layouts.layout', ['title' => 'Asaish']);
     }
 }

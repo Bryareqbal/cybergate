@@ -88,6 +88,7 @@
 
 
 
+
     @else
     <div class="text-center">
         <h1 class="text-3xl font-bold text-red-500">No cases found</h1>
@@ -126,9 +127,14 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
 
-                <input id="x" type="hidden" name="content">
-                <trix-editor rows="20" wire:model.defer="note" name="content" input="x">
-                </trix-editor>
+                   <div wire:ignore class="block mt-4 text-sm">
+
+                <textarea wire:model="description" id="description"
+                    class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
+
+            </div>
+
+
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 ">
@@ -147,6 +153,33 @@
 </div>
 
 
+@push('scripts')
+<script>
+    $('#description').summernote({
+        placeholder: 'Enter your description',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', ]],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+        callbacks: {
+            onChange: function(contents, $editable) {
+                @this.set('description', contents);
+            }
+        }
+    });
+</script>
+@endpush
+
+
+
 
 
 </div>
+

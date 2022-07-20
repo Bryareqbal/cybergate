@@ -13,11 +13,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
     @if (Route::currentRouteName() === 'adding_information' || Route::currentRouteName() === 'edit-information' ||
        Route::currentRouteName() === 'Asaish' || Route::currentRouteName() === 'view_information')
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     @endif
     <style>
         ::-webkit-scrollbar {
@@ -89,16 +90,9 @@
         </footer>
     </div>
 
+    @stack('scripts')
 
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-    @if (Route::currentRouteName() === 'adding_information' || Route::currentRouteName() === 'edit-information'
-     || Route::currentRouteName() === 'Asaish' || Route::currentRouteName() === 'view_information')
-        <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
-        <script>
-            $('trix-editor').css("min-height", "220px");
-
-        </script>
-    @endif
 
     @livewireScripts
 

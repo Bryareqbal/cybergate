@@ -13,7 +13,7 @@ class ViewInformation extends Component
 
     public $caseId;
     public $state;
-    public $notes;
+    public $description;
     public $search;
 
 
@@ -34,12 +34,12 @@ class ViewInformation extends Component
         $cyber =new Cyber();
         $cyber->data_id = $DataId;
         $cyber->user_id = auth()->user()->id;
-        $cyber->note = $this->notes;
+        $cyber->note = $this->description;
         $cyber->isSolved = $this->state ? true : false;
         $cyber->save();
-        $this->reset(['notes']);
+        $this->reset(['description']);
         $this->caseId= null;
-        session()->flash('message', 'Data has been completed');
+        session()->flash('message', 'the case has been Closed');
     }
 
 
@@ -48,6 +48,7 @@ class ViewInformation extends Component
     public function render()
     {
         $cases=Data::search($this->search)->where("status", "approved")->latest()->paginate(12);
-        return view('livewire.pages.view-information', compact('cases'))->extends('layouts.layout', ['title' => 'View Information']);
+        $Cyber=Cyber::get();
+        return view('livewire.pages.view-information', compact('cases','Cyber'))->extends('layouts.layout', ['title' => 'View Information']);
     }
 }

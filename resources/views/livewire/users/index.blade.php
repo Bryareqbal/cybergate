@@ -274,7 +274,7 @@
                         @enderror
                         <div class="flex flex-col space-y-1">
                             <label for="role">role</label>
-                            <select id="role" class="px-3 py-2 rounded ">
+                            <select id="role" class="px-3 py-2 rounded " wire:model="newUserForm.role">
                                 <option value="none">None</option>
                                 <option value="creator">Creator</option>
                                 <option value="cyber">Cyber</option>

@@ -16,6 +16,8 @@ class CreateInformation extends Component
 
     public $ShowModel = false;
 
+    public $description;
+
     public $form = [
         "fullname" => "",
         "email" => "",
@@ -24,7 +26,6 @@ class CreateInformation extends Component
         "gender" => "",
         "region" => "",
         "city" => "",
-        "description" => "",
         "state_address" => "",
         "quarter_address" => "",
         "links" => [
@@ -91,10 +92,10 @@ class CreateInformation extends Component
             $data->state_address = $this->form["state_address"];
             $data->quarter_address = $this->form["quarter_address"];
             $data->links = json_encode($this->form["links"]);
-            $data->description = $this->form["description"];
+            $data->description = $this->description;
             $data->case = $this->form["case"];
             $data->type_of_problem = $this->form["type_of_problem"];
-            $data->whgcase = $this->form["whgcase"];
+            $data->whgcase = null;
             $data->user_id = Auth::id();
             $data->file_image = $orginalFileImageName;
             $data->personal_image = $orginalPersonalImageName;

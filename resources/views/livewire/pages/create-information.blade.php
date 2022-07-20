@@ -53,34 +53,33 @@
 
 
                 </div>
-            @else
-                <div class="">
-                    <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 @error('form.personal_image') border-red-500 @enderror border-dashed rounded-md"
-                        style="max-width: 300px">
-                        <div class="space-y-1 text-center">
-                            <svg class="mx-auto h-20 w-20 text-gray-400" stroke="currentColor" fill="none"
-                                viewBox="0 0 48 48" aria-hidden="true">
-                                <path
-                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <div class="flex text-sm text-gray-600">
-                                <label for="file-upload1"
-                                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                    <span>Upload a file</span>
-                                    <input id="file-upload1" name="file-upload" wire:model.defer="form.personal_image"
-                                        type="file" class="sr-only">
-                                </label>
-                                <p class="pl-1">or drag and drop</p>
-                            </div>
-                            <p class="text-xs text-gray-500">PNG, JPG, JPEG between 600KB-1MB</p>
-                        </div>
-                    </div>
-                    @error('form.personal_image')
-                        <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-                    @enderror
-                </div>
             @endif
+            <div class="">
+                <div class="mx-auto md:mx-0 mt-1 flex justify-center px-6 pt-5 pb-6 border-2 @error('form.personal_image') border-red-500 @enderror border-dashed rounded-md"
+                    style="max-width: 300px">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-20 w-20 text-gray-400" stroke="currentColor" fill="none"
+                            viewBox="0 0 48 48" aria-hidden="true">
+                            <path
+                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="file-upload1"
+                                class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                <span>Upload a file</span>
+                                <input id="file-upload1" name="file-upload" wire:model.defer="form.personal_image"
+                                    type="file" class="sr-only">
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p class="text-xs text-gray-500">PNG,JPG between 600KB-1MB</p>
+                    </div>
+                </div>
+                @error('form.personal_image')
+                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+                @enderror
+            </div>
             <div class="grid  gap-6 my-6 lg:grid-cols-3 md:grid-cols-2   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class=" text-sm">
@@ -102,7 +101,7 @@
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.phone" name="phone"
+                        <input type="text" wire:model.defer="form.phone" name="phone" maxlength="15"
                             class="block w-full mt-1 @error('form.phone') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="Phone Number" />
                         @error('form.phone')
@@ -288,7 +287,7 @@
             <div class="flex flex-col   gap-6 my-8 mb-5  lg:grid-cols-2 md:grid-cols-1   p-2 lg:mx-0 sm:grid-col-1">
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.personal_id" name="personal_id"
+                        <input type="text" wire:model.defer="form.personal_id" name="personal_id" maxlength="15"
                             class="block w-full mt-1 text-sm @error('form.personal_id') border-red-500 @enderror focus:border-purple-400 focus:outline-none sm:text-sm rounded-lg  focus:shadow-outline-purple form-input"
                             placeholder="Personal Id" />
                         @error('form.personal_id')
@@ -322,7 +321,7 @@
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                             </div>
-                            <p class="text-xs text-gray-500">PNG, JPG, JPEG between 600KB-1MB</p>
+                            <p class="text-xs text-gray-500">PNG,JPG between 600KB-1MB</p>
                         </div>
 
                     </div>
@@ -332,16 +331,12 @@
                 </div>
             </div>
             <div wire:ignore class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
-                    problem</span>
+                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description problem</span>
+                <textarea wire:model.defer="description" id="description"
+                    class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
 
-                <input id="x" type="hidden" name="content">
-                <trix-editor wire:model="form.description" name="content" input="x"></trix-editor>
-
-                @error('form.description')
-                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-                @enderror
             </div>
+
 
 
 
@@ -367,6 +362,29 @@
 
     </div>
 
+    @push('scripts')
+    <script>
+        $('#description').summernote({
+            placeholder: 'Enter your description',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', ]],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('description', contents);
+                }
+            }
+        });
+    </script>
+@endpush
 
 
 

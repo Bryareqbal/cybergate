@@ -39,7 +39,7 @@
                     <div class="flex flex-row justify-between group-hover:text-gray-200 ">
                         <p class="text-sm mt-1 text-gray-500">Current Data</p>
 
-                        <p class="text-sm mt-1 text-gray-500">-</p>
+                        <p class="text-sm mt-1 text-gray-500">{{ $find_data_Today }}</p>
 
                     </div>
                 </div>

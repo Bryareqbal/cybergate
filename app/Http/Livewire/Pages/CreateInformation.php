@@ -105,6 +105,7 @@ class CreateInformation extends Component
             $data->save();
         }
         $this->reset('form');
+        $this->reset('description');
         session()->flash('message', ' your information has been added');
     }
 

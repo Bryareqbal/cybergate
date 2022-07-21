@@ -48,7 +48,6 @@ class ViewInformation extends Component
     public function render()
     {
         $cases=Data::search($this->search)->where("status", "approved")->latest()->paginate(12);
-        $Cyber=Cyber::get();
-        return view('livewire.pages.view-information', compact('cases','Cyber'))->extends('layouts.layout', ['title' => 'View Information']);
+        return view('livewire.pages.view-information', compact('cases'))->extends('layouts.layout', ['title' => 'View Information']);
     }
 }

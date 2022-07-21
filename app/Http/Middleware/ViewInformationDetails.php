@@ -20,7 +20,7 @@ class ViewInformationDetails
     {
         $data = data::find($request->route()->parameters()['id']);
 
-        if (Gate::allows("isAsaysh") && $data->status === null) {
+        if (Gate::allows("isAsaysh") && $data->status === null && $data->adminCheckCurrentData === true) {
             return $next($request);
         }
 

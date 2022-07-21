@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->string('fullname')->nullable();
             $table->string('personal_id', 100);
             $table->string('email', 100)->default(null);
-
             $table->string('phone', 20)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('gender', 20)->nullable(); //male and female and other
@@ -35,6 +34,7 @@ return new class extends Migration {
             $table->string('file_image')->nullable();
             $table->string('personal_image')->nullable();
             $table->string('status')->nullable();
+            $table->boolean('approvedByAdmin')->nullable();
             $table->timestamps();
         });
     }

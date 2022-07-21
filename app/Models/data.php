@@ -12,13 +12,18 @@ class data extends Model
     protected $table="data";
     protected $casts = ["date" => "datetime", "links" => "array"];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-
-    public function getAvatarAttribute(){
+    public function getAvatarAttribute()
+    {
         return   asset('/uploads/personalImages/'.$this->personal_image.'');
     }
 
-    public function getAttachedFileAttribute(){
+    public function getAttachedFileAttribute()
+    {
         return   asset('/uploads/fileImages/'.$this->file_image.'');
     }
 

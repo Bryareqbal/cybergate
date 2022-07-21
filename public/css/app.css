@@ -1299,9 +1299,12 @@ select {
 }
 .grid {
   display: grid;
+<<<<<<< HEAD
 }
 .contents {
   display: contents;
+=======
+>>>>>>> shad
 }
 .hidden {
   display: none;

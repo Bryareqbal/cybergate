@@ -5,8 +5,7 @@
             <li class="inline-flex items-center">
                 <a href="{{ route('root') }}"
                     class="inline-flex items-center text-lg font-semibold text-gray-700 hover:text-gray-900">
-                    <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                         </path>
@@ -49,52 +48,63 @@
             type="text" placeholder="Search..." aria-label="Search">
     </div>
     @if (session()->has('message'))
-    <div class="container mx-auto  py-1  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
-        role="alert">
-        {{ session('message') }}
-    </div>
+        <div class="container mx-auto  py-1  rounded bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
+            role="alert">
+            {{ session('message') }}
+        </div>
     @endif
 
 
     @if ($Data->IsNotEmpty())
-    <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-stretch">
-            @foreach ($Data as $case)
-            <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
-                <div class="flex flex-col items-center pb-3">
-                    <img class="mb-3 w-2/3 my-3 aspect-square object-cover object-center rounded-md"
-                        src=" {{ $case->avatar }}" alt="Bonnie image">
-                    <span class="mb-1 text-xl font-medium text-gray-900 capitalize ">{{ $case->case }}</span>
-                    <h5 class="text-sm text-gray-500 capitalize">{{ $case->fullname }}</h5>
-                    <div class="flex mt-4 space-x-3 lg:mt-6">
-                        <a href="{{ route('details', $case->id) }}" class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800
+        <div class="container mx-auto">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-stretch">
+                @foreach ($Data as $case)
+                    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+                        <div class="flex flex-col items-center pb-3">
+                            <img class="mb-3 w-2/3 my-3 aspect-square object-cover object-center rounded-md"
+                                src=" {{ $case->avatar }}" alt="Bonnie image">
+                            <span class="mb-1 text-xl font-medium text-gray-900 capitalize ">{{ $case->case }}</span>
+                            <h5 class="text-sm text-gray-500 capitalize">{{ $case->fullname }}</h5>
+                            <div class="flex mt-4 space-x-3 lg:mt-6">
+                                <a href="{{ route('details', $case->id) }}"
+                                    class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800
                                  focus:ring-4 focus:outline-none focus:ring-blue-300 "><i
-                                class="fa-solid fa-eye"></i></a>
+                                        class="fa-solid fa-eye"></i></a>
 
-                        <a wire:click.prevent="$set('caseId','{{ $case->id }}')" data-modal-toggle="extralarge-modal"
-                            class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center bg-green-500 text-white rounded-lg border
+                                <a wire:click.prevent="$set('caseId','{{ $case->id }}')"
+                                    data-modal-toggle="extralarge-modal"
+                                    class="inline-flex items-center py-2 px-3 text-lg font-semibold text-center bg-green-500 text-white rounded-lg border
                                  border-green-500  hover:bg-green-700 focus:ring-4 focus:outline-none ">
-                            <i class="fa-solid fa-check"></i>
-                        </a>
+                                    <i class="fa-solid fa-check"></i>
+                                </a>
 
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+
             </div>
-            @endforeach
+        </div>
+    @else
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-red-500">No cases found</h1>
 
         </div>
-    </div>
-
-
-
-
-
-    @else
-    <div class="text-center">
-        <h1 class="text-3xl font-bold text-red-500">No cases found</h1>
-
-    </div>
     @endif
+
+
+
+    <div class=" flex  justify-center items-center mx-auto   " style="margin-bottom: 4rem">
+
+        {{ $Data->links() }}
+
+    </div>
+
+    <h1 class="text-3xl font-bold text-red-500">No cases found</h1>
+
+</div>
+@endif
 
 
 
@@ -113,8 +123,10 @@
             <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
                 <h3 class="text-xl font-medium text-gray-900 ">
                     What do you want to do this Case ? </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                  dark:hover:text-white" data-modal-toggle="extralarge-modal">
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                  dark:hover:text-white"
+                    data-modal-toggle="extralarge-modal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -127,12 +139,12 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
 
-                   <div wire:ignore class="block mt-4 text-sm">
+                <div wire:ignore class="block mt-4 text-sm">
 
-                <textarea wire:model="description" id="description"
-                    class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
+                    <textarea wire:model="description" id="description"
+                        class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
 
-            </div>
+                </div>
 
 
             </div>
@@ -143,7 +155,8 @@
                 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Approved
                 </button>
-                <button data-modal-toggle="extralarge-modal" Wire:click.prevent="DisApproved" type="button" class="text-gray-500 bg-white
+                <button data-modal-toggle="extralarge-modal" Wire:click.prevent="DisApproved" type="button"
+                    class="text-gray-500 bg-white
                 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5
                  hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300">Disapproved</button>
 
@@ -154,27 +167,27 @@
 
 
 @push('scripts')
-<script>
-    $('#description').summernote({
-        placeholder: 'Enter your description',
-        tabsize: 2,
-        height: 300,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', ]],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ],
-        callbacks: {
-            onChange: function(contents, $editable) {
-                @this.set('description', contents);
+    <script>
+        $('#description').summernote({
+            placeholder: 'Enter your description',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', ]],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('description', contents);
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 @endpush
 
 
@@ -182,4 +195,3 @@
 
 
 </div>
-

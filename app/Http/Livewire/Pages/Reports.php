@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Pages;
+
 use App\Models\Asaysh;
 use App\Models\Cyber;
 use App\Models\data;
@@ -39,7 +40,8 @@ class Reports extends Component
 
 
     // Get data Information and store in the new variable
-    public function updatedshowmodelinformation(){
+    public function updatedshowmodelinformation()
+    {
         $this->Getshowmodelinformation = $this->showmodelinformation;
     }
 
@@ -83,33 +85,33 @@ class Reports extends Component
     public function render()
     {
         // For Data Information only
-       $this->DataFirst && $this->DataSecond ?
-        $datas = data::search($this->SearchData)->whereBetween('created_at', [$this->DataFirst,$this->DataSecond])->paginate(10):
-        $datas = data::search($this->SearchData)->paginate(10);
+        $this->DataFirst && $this->DataSecond ?
+        $datas = data::search($this->SearchData)->whereBetween('created_at', [$this->DataFirst,$this->DataSecond])->simplePaginate(10, ['*'], 'data'):
+        $datas = data::search($this->SearchData)->simplePaginate(10, ['*'], 'data');
 
 
 
-       //For Asaysh  Data Information only
-       $SearchDataAsyash = $this->SearchDataAsyash;
-       $this->DataFirstAsyash && $this->DataSecondAsyash ?
-       $asayshes = Asaysh::WhereBetween('created_at', [$this->SearchDataAsyash,$this->SearchDataAsyash])->with('data')->whereHas('data', function($query) use($SearchDataAsyash) {
-        $query->where("fullname",'LIKE','%' .$SearchDataAsyash.'%');
-       })->paginate(10)
-       :$asayshes = Asaysh::with('data')->whereHas('data', function($query) use($SearchDataAsyash) {
-        $query->where("fullname",'LIKE','%' .$SearchDataAsyash.'%');
-       })->paginate(10);
+        //For Asaysh  Data Information only
+        $SearchDataAsyash = $this->SearchDataAsyash;
+        $this->DataFirstAsyash && $this->DataSecondAsyash ?
+       $asayshes = Asaysh::WhereBetween('created_at', [$this->DataFirstAsyash,$this->DataSecondAsyash])->with('data')->whereHas('data', function ($query) use ($SearchDataAsyash) {
+           return $query->where("fullname", 'LIKE', '%' .$SearchDataAsyash.'%')->orWhere("email", "LIKE", "%" . $SearchDataAsyash . "%");
+       })->simplePaginate(10, ['*'], 'asaysh')
+       :$asayshes = Asaysh::with('data')->whereHas('data', function ($query) use ($SearchDataAsyash) {
+           $query->where("fullname", 'LIKE', '%' .$SearchDataAsyash.'%')->orWhere("email", "LIKE", "%" . $SearchDataAsyash . "%");
+       })->simplePaginate(10, ['*'], 'asaysh');
 
 
-       // For Cyber Data Information only
-       $SearchDataCyber=$this->SearchDataCyber;
-       $this->DataFirstCyber && $this->DataSecondCyber ?
-       $cybers=Cyber::WhereBetween('created_at', [$this->SearchDataCyber,$this->SearchDataCyber])->with('data')->whereHas('data',function($queryCyber) use ($SearchDataCyber) {
-        $queryCyber->where("fullname",'LIKE','%' .$SearchDataCyber.'%');
-       })->paginate(10)
-       :$cybers = Cyber::with('data')->whereHas('data', function($queryCyber) use($SearchDataCyber) {
-        $queryCyber->where("fullname",'LIKE','%' .$SearchDataCyber.'%');
-       })->paginate(10);
+        // For Cyber Data Information only
+        $SearchDataCyber=$this->SearchDataCyber;
+        $this->DataFirstCyber && $this->DataSecondCyber ?
+       $cybers=Cyber::WhereBetween('created_at', [$this->DataFirstCyber,$this->DataSecondCyber])->with('data')->whereHas('data', function ($queryCyber) use ($SearchDataCyber) {
+           $queryCyber->where("fullname", 'LIKE', '%' .$SearchDataCyber.'%')->orWhere("email", "LIKE", "%" . $SearchDataCyber . "%");
+       })->simplePaginate(10, ['*'], 'cyber')
+       :$cybers = Cyber::with('data')->whereHas('data', function ($queryCyber) use ($SearchDataCyber) {
+           $queryCyber->where("fullname", 'LIKE', '%' .$SearchDataCyber.'%')->orWhere("email", "LIKE", "%" . $SearchDataCyber . "%");
+       })->simplePaginate(10, ['*'], 'cyber');
 
-        return view('livewire.pages.reports', compact('datas', 'asayshes','cybers'))->extends("layouts.layout", ["title" => "Reports"]);
+        return view('livewire.pages.reports', compact('datas', 'asayshes', 'cybers'))->extends("layouts.layout", ["title" => "Reports"]);
     }
 }

@@ -240,6 +240,7 @@
                                 <th class="py-3 px-6 text-left">Case Title</th>
                                 <th class="py-3 px-6 text-center">Email</th>
                                 <th class="py-3 px-6 text-center">Creator</th>
+                                <th class="py-3 px-6 text-center">admin approve</th>
                                 <th class="py-3 px-6 text-center">Status</th>
                                 <th class="py-3 px-6 text-center">Created at</th>
                                 <th class="py-3 px-6 text-center">Last updated</th>
@@ -268,7 +269,26 @@
                                         <span>{{ $case->user->name ?? 'no name' }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-center  ">
-                                        <span>{{ $case->status ?? 'pending' }}</span>
+                                        @if ($case->approvedByAdmin === 1)
+                                            <span class="text-green-500">Approved</span>
+                                        @else
+                                            <span class="text-red-500">Disapproved</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-3 px-6 text-center  ">
+                                        @if ($case->status === 'Apporved')
+                                            <span class="text-green-500">Approved</span>
+                                        @elseif ($case->status === 'Disapproved')
+                                            <span class="text-red-500">Disapproved</span>
+                                        @elseif ($case->status === 'solved')
+                                            <span class="text-blue-500">Solved</span>
+                                        @elseif ($case->status === 'not solved')
+                                            <span class="text-red-500">Not solved</span>
+                                        @elseif ($case->approvedByAdmin === 0 && $case->status === null)
+                                            <span class="text-red-500">-</span>
+                                        @elseif ($case->status === null)
+                                            <span class="text-slate-500">Pending</span>
+                                        @endif
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <span class="flex justify-center ">

@@ -92,42 +92,39 @@ class Index extends Component
 
 
 
-    public function switchUser(User $user){
+    public function switchUser(User $user)
+    {
         $this->dataId=$user->id;
         $this->editUserForm['newName']=$user->name;
         $this->editUserForm['newEmail']=$user->email;
         $this->editUserForm['newRole']=$user->permission;
-
-
     }
 
 
-    public function EditUser($Id){
+    public function EditUser($Id)
+    {
         $user=User::FindOrFail($this->dataId);
         $this->Validate([
             "editUserForm.newName" => 'required|max:255',
             "editUserForm.newEmail" => 'required|email|max:255|unique:users,email,'.$user->id,
         ]);
 
-       $user->update([
+        $user->update([
         'name'=>$this->editUserForm['newName'],
         'email'=> $this->editUserForm['newEmail'],
        ]);
 
 
-       return  session()->flash("success", "User has been updated Successfuly");
-
-
+        return  session()->flash("success", "User has been updated Successfuly");
     }
 
     public $newPassword;
     public $confirmPassword;
-    public  function EditPassword($Id)
+    public function EditPassword($Id)
     {
         $user=User::FindOrFail($this->dataId);
-            if($this->newPassword === $this->confirmPassword){
-
-                   $this->validate([
+        if ($this->newPassword === $this->confirmPassword) {
+            $this->validate([
                 "newPassword" => 'required|max:255|min:8|same:confirmPassword',
             ]);
 
@@ -135,20 +132,15 @@ class Index extends Component
                 'password' => Hash::make($this->newPassword),
             ])->save();
             return session()->flash("success", "Password has been updated Successfuly");
-            }else{
-                return session()->flash("error", "Password does not match the confirmation password");
-            }
-
-
-
-
-
+        } else {
+            return session()->flash("error", "Password does not match the confirmation password");
+        }
     }
 
 
     public function render()
     {
-        $users=User::search($this->search)->latest()->paginate($this->limit);
+        $users=User::search($this->search)->latest()->simplePaginate($this->limit);
         return view('livewire.users.index', compact('users'))->extends('layouts.layout', ['title' => 'Users']);
     }
 }

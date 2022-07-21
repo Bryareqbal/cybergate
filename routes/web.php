@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\AdminCheck;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Pages\Asaish;
@@ -42,6 +43,7 @@ Route::middleware([
         Route::get("/edit_information/{id}", EditInformation::class)->name('edit-information');
         Route::get('/reports', Reports::class)->name('reports');
         Route::get('/users', Index::class)->name('users');
+        Route::get('/adminCheck', AdminCheck::class)->name('adminCheck');
     });
 
     Route::get('/dashboard', Dashboard::class)->name('root');

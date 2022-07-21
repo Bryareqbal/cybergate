@@ -94,7 +94,6 @@ class CreateInformation extends Component
             $data->description = $this->form["description"];
             $data->case = $this->form["case"];
             $data->type_of_problem = $this->form["type_of_problem"];
-            $data->whgcase = $this->form["whgcase"];
             $data->user_id = Auth::id();
             $data->file_image = $orginalFileImageName;
             $data->personal_image = $orginalPersonalImageName;

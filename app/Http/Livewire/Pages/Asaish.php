@@ -46,7 +46,7 @@ class Asaish extends Component
     }
     public function render()
     {
-        $Data=Data::where('status', null)->latest()->paginate(12);
+        $Data=Data::where('status', null)->where('approvedByAdmin', true)->latest()->paginate(12);
         return view('livewire.pages.asaish', compact('Data'))->extends('layouts.layout', ['title' => 'Asaish']);
     }
 }

@@ -139,7 +139,7 @@
             </form>
 
 
-            <div class="w-full  p-2 cursor-pointer opacity-80">
+            <a href="{{ route('adminCheck') }}" class="w-full  p-2 cursor-pointer opacity-80">
                 <div
                     class="flex flex-col px-6 py-10 overflow-hidden rounded-xl shadow-lg
                  duration-300 hover:shadow-2xl bg-gradient-to-br from-cyan-50/50 to-cyan-100/50">
@@ -155,15 +155,15 @@
                         </div>
                     </div>
                     <h1 class="text-3xl sm:text-4xl xl:text-2xl font-bold text-gray-700 mt-10 group-hover:text-gray-50">
-                        No Name</h1>
+                        Admin Check</h1>
                     <div class="flex flex-row justify-between group-hover:text-gray-200 ">
                         <p class="text-sm mt-1 text-gray-500">Current Data</p>
 
-                        <p class="text-sm mt-1 text-gray-500">12</p>
+                        <p class="text-sm mt-1 text-gray-500">{{ $adminCheckCurrentData }}</p>
 
                     </div>
                 </div>
-            </div>
+            </a>
 
             <a href="/user/profile" class="w-full  p-2
               cursor-pointer opacity-80">

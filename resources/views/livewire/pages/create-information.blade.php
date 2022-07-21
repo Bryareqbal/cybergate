@@ -96,12 +96,16 @@
                         <input wire:model.defer="form.email" name="email"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Email Address (optional)" />
+                            @error('form.email')
+                            <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+                        @enderror
 
                     </label>
+
                 </div>
                 <div class="w-full ">
                     <label class="text-sm">
-                        <input type="text" wire:model.defer="form.phone" name="phone" maxlength="15"
+                        <input type="text" wire:model.defer="form.phone" name="phone" maxlength="12" minlength="10"
                             class="block w-full mt-1 @error('form.phone') border-red-500 @enderror text-sm focus:outline-none sm:text-sm rounded-lg focus:shadow-outline-purple form-input"
                             placeholder="Phone Number" />
                         @error('form.phone')
@@ -153,10 +157,10 @@
                     <div class="mt-1 relative rounded-md shadow-sm">
                         <select wire:model.defer="form.city"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
-                            >
-                            <option>--select city--</option>
+
+
                             @foreach ($cities as $city)
-                                <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                <option selected value="{{ $city->name }}">{{ $city->name }}</option>
                             @endforeach
 
                         </select>

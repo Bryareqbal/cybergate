@@ -26,6 +26,6 @@ class data extends Model
     {
         return empty($search) ? static::query() :
          static::where('fullname', 'LIKE', '%'.$search.'%')
-        ->orWhere('case', 'LIKE', '%'.$search.'%');
+        ->orWhere('email', 'LIKE', '%'.$search.'%');
     }
 }

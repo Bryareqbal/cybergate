@@ -127,7 +127,7 @@ class CreateInformation extends Component
 
     public function render()
     {
-        $cities = city::latest()->get();
+        $cities = city::orderBy('name', 'ASC')->get();
         return view('livewire.pages.create-information', compact('cities'))->extends('layouts.layout', ['title' => 'Adding Information']);
     }
 }

@@ -32,8 +32,7 @@
                             </div>
                             <div class="flex items-center space-x-3  my-2 ">
                                 <i class="text-xl fa-solid fa-calendar"></i>
-                                <span
-                                    class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: 'No Date of Birth' }}
+                                <span class=" text-gray-900 capitalize">{{ $case->date_of_birth ?: 'No Date of Birth' }}
                                 </span>
 
                             </div>
@@ -57,14 +56,19 @@
 
                         <div class="mb-12">
                             <h1 class="text-2xl  font-bold mb-3">Attached links</h1>
-                            <ul class="space-y-2 lg:list-disc md:list-disc sm:list-none  list-inside mb-12 ">
-                                @foreach (json_decode($case->links) as $key => $value)
-                                    <li class="hover:scale-105 duration-150 ease-in"><a href="{{ $value }}"
-                                            class="text-blue-500 hover:text-blue-600 "
-                                            target="_blank">{{ $key }}</a></li>
-                                @endforeach
+                            @if (!empty($case->links))
 
-                            </ul>
+                                <ul class="space-y-2 lg:list-disc md:list-disc sm:list-none  list-inside mb-12 ">
+                                    @foreach (json_decode($case->links) as $key => $value)
+                                        <li class="hover:scale-105 duration-150 ease-in"><a href="{{ $value }}"
+                                                class="text-blue-500 hover:text-blue-600 "
+                                                target="_blank">{{ $key }}</a></li>
+                                    @endforeach
+
+                                </ul>
+                            @else
+                                <p class="text-xl font-bold text-red-500">no links</p>
+                            @endif
                         </div>
 
                         <div class=" items-center ">

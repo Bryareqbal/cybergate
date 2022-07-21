@@ -46,6 +46,7 @@ class Asaish extends Component
         $this->caseId = null;
         $this->description = null;
     }
+
     public function render()
     {
         $Data=Data::search($this->search)->where('status', null)->where('approvedByAdmin', true)->latest()->paginate(12);

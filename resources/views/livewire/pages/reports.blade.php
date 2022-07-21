@@ -45,22 +45,26 @@
             <h1 class="text-4xl text-center font-bold">
                 Report Information
             </h1>
-                <div class="container mx-auto rounded-lg my-6 space-y-10">
-                    <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
-                        <div>
+            <div class="container mx-auto rounded-lg my-6 space-y-10">
+                <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
+                    <div>
                         <label for="from">search: </label>
-                            <input  wire:model="SearchData" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search..." aria-label="Search">
-                        </div>
-                        <div class="">
-                            <label for="from">From: </label>
-                            <input wire:model="DataFirst" type="date" id="from" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
-                        <div class="">
-                            <label for="to">To: </label>
-                            <input type="date" wire:model="DataSecond" id="to" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
+                        <input wire:model="SearchData"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
+                            type="text" placeholder="Search..." aria-label="Search">
                     </div>
-                    @if ($datas->isNotEmpty())
+                    <div class="">
+                        <label for="from">From: </label>
+                        <input wire:model="DataFirst" type="date" id="from"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                    <div class="">
+                        <label for="to">To: </label>
+                        <input type="date" wire:model="DataSecond" id="to"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                </div>
+                @if ($datas->isNotEmpty())
 
                     <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                         <table class="w-full table-auto">
@@ -131,7 +135,8 @@
 
 
                                         <td class="py-3 px-6 text-center">
-                                            <button wire:click="$set('showmodelinformation','{{ $data->description }}')"type="button"
+                                            <button
+                                                wire:click="$set('showmodelinformation','{{ $data->description }}')"type="button"
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
 
@@ -141,38 +146,51 @@
                                 @endforeach
 
 
-                                 {{-- Show Model Information --}}
-                                 @if ($showmodelinformation  !== null)
-                                 <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                                     <div class="fixed z-10 inset-0 overflow-y-auto">
-                                       <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                                {{-- Show Model Information --}}
+                                @if ($showmodelinformation !== null)
+                                    <div class="relative z-10" aria-labelledby="modal-title" role="dialog"
+                                        aria-modal="true">
+                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                                        <div class="fixed z-10 inset-0 overflow-y-auto">
+                                            <div
+                                                class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
 
-                                         <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
-                                           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                             <div class="sm:flex sm:items-start">
-                                               <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
-                                                  </svg>
-                                               </div>
-                                               <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                 <div class="mt-2">
-                                                   <p class="text-sm text-gray-500">{!! $Getshowmodelinformation !!}</p>
-                                                 </div>
-                                               </div>
-                                             </div>
-                                           </div>
-                                           <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                                <div
+                                                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                        <div class="sm:flex sm:items-start">
+                                                            <div
+                                                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    class="h-6 w-6 text-red-500" viewBox="0 0 20 20"
+                                                                    fill="currentColor">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                                                        clip-rule="evenodd" />
+                                                                </svg>
+                                                            </div>
+                                                            <div
+                                                                class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left overflow-auto">
+                                                                <div class="mt-2">
+                                                                    <p class="text-sm text-gray-500">
+                                                                        {!! $Getshowmodelinformation !!}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
-                                             <button wire:click="$set('showmodelinformation',null)" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                                           </div>
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                   @endif
-                                   {{--  end  Model Information  --}}
+                                                        <button wire:click="$set('showmodelinformation',null)"
+                                                            type="button"
+                                                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                {{-- end  Model Information --}}
 
 
                             </tbody>
@@ -182,40 +200,43 @@
 
 
                         <div
-                        class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
+                            class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
                           bg-gray-50 sm:grid-cols-9">
-                        <span class="flex items-center col-span-3">
-                            Showing Pages {{ $datas->currentPage() }} from {{ $datas->lastItem() }} to {{ $datas->currentPage() }}
-                        </span>
-                        <span class="col-span-2"></span>
-                        <!-- Pagination -->
-                        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                            <nav aria-label="Table navigation">
-                                <ul class="inline-flex items-center">
+                            <span class="flex items-center col-span-3">
+                                Showing Pages {{ $datas->currentPage() }} from {{ $datas->lastItem() }} to
+                                {{ $datas->currentPage() }}
+                            </span>
+                            <span class="col-span-2"></span>
+                            <!-- Pagination -->
+                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                                <nav aria-label="Table navigation">
+                                    <ul class="inline-flex items-center">
 
-                                    {{ $datas->links() }}
-                                </ul>
-                            </nav>
-                        </span>
+                                        {{ $datas->links() }}
+                                    </ul>
+                                </nav>
+                            </span>
+                        </div>
+
+
                     </div>
-
-
-                    </div>
-                </div>
-            @else
+            </div>
+        @else
             <div class="container flex flex-col items-center px-6 mx-auto">
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
 
                 <p class="text-gray-700 text-xl font-bold ">
-                  No data were found
-                  <a class="text-gray-700" href="">
-                    go back
-                  </a>
+                    No data were found
+                    <a class="text-gray-700" href="">
+                        go back
+                    </a>
                 </p>
-              </div>
+            </div>
 
             @endif
 
@@ -226,23 +247,27 @@
             <h1 class="text-4xl text-center font-bold">
                 Report Asaysh
             </h1>
-                <div class="container mx-auto rounded-lg my-6 space-y-10">
-                    <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
+            <div class="container mx-auto rounded-lg my-6 space-y-10">
+                <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
 
-                        <div>
-                            <label for="from">search: </label>
-                                <input  wire:model="SearchDataAsyash" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search..." aria-label="Search">
-                            </div>
-                        <div class="">
-                            <label for="from">From: </label>
-                            <input wire:model="DataFirstAsyash" type="date" id="from" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
-                        <div class="">
-                            <label for="to">To: </label>
-                            <input type="date" wire:model="DataSecondAsyash" id="to" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
+                    <div>
+                        <label for="from">search: </label>
+                        <input wire:model="SearchDataAsyash"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
+                            type="text" placeholder="Search..." aria-label="Search">
                     </div>
-                      @if ($asayshes->isNotEmpty())
+                    <div class="">
+                        <label for="from">From: </label>
+                        <input wire:model="DataFirstAsyash" type="date" id="from"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                    <div class="">
+                        <label for="to">To: </label>
+                        <input type="date" wire:model="DataSecondAsyash" id="to"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                </div>
+                @if ($asayshes->isNotEmpty())
 
                     <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                         <table class="w-full table-auto">
@@ -273,11 +298,9 @@
                                         <td class="py-3 px-6 text-center">
 
                                             @if ($asaysh->isApproved == true)
-                                            <span class="text-green-500 hover:text-green-600">Approved</span>
-
+                                                <span class="text-green-500 hover:text-green-600">Approved</span>
                                             @else
-                                            <span class="text-red-500 hover:text-green-600">Disapproved</span>
-
+                                                <span class="text-red-500 hover:text-green-600">Disapproved</span>
                                             @endif
                                         </td>
                                         <td class="py-3 px-6 text-center">
@@ -317,8 +340,9 @@
 
 
 
-                                        <td  class="py-3 px-6 text-center  hover:scale-110">
-                                            <button type="button" wire:click="$set('showmodeldata','{{ $asaysh->note }}')"
+                                        <td class="py-3 px-6 text-center  hover:scale-110">
+                                            <button type="button"
+                                                wire:click="$set('showmodeldata','{{ $asaysh->note }}')"
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
 
@@ -326,77 +350,90 @@
                                         </td>
 
                                     </tr>
-
                                 @endforeach
                                 {{-- Show Model Asyaish --}}
-                                @if ($showmodeldata  !== null)
-                                <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                                    <div class="fixed z-10 inset-0 overflow-y-auto">
-                                      <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                                @if ($showmodeldata !== null)
+                                    <div class="relative z-10" aria-labelledby="modal-title" role="dialog"
+                                        aria-modal="true">
+                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                                        <div class="fixed z-10 inset-0 overflow-y-auto">
+                                            <div
+                                                class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
 
-                                        <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
-                                          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                            <div class="sm:flex sm:items-start">
-                                              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                                                   <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
-                                                 </svg>
-                                              </div>
-                                              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                <div class="mt-2">
-                                                  <p class="text-sm text-gray-500">{!! $Getshowmodeldata !!}</p>
+                                                <div
+                                                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                        <div class="sm:flex sm:items-start">
+                                                            <div
+                                                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    class="h-6 w-6 text-red-500" viewBox="0 0 20 20"
+                                                                    fill="currentColor">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                                                        clip-rule="evenodd" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                                <div class="mt-2">
+                                                                    <p class="text-sm text-gray-500">
+                                                                        {!! $Getshowmodeldata !!}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+
+                                                        <button wire:click="$set('showmodeldata',null)" type="button"
+                                                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                                    </div>
                                                 </div>
-                                              </div>
                                             </div>
-                                          </div>
-                                          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-
-                                            <button wire:click="$set('showmodeldata',null)" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                                          </div>
                                         </div>
-                                      </div>
                                     </div>
-                                  </div>
-                                  @endif
-                                  {{--  end  Model Asyaish  --}}
+                                @endif
+                                {{-- end  Model Asyaish --}}
 
                             </tbody>
                         </table>
                         <div
-                        class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
+                            class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
                           bg-gray-50 sm:grid-cols-9">
-                        <span class="flex items-center col-span-3">
-                            Showing Pages {{ $asayshes->currentPage() }} from {{ $asayshes->lastItem() }} to {{ $asayshes->currentPage() }}
-                        </span>
-                        <span class="col-span-2"></span>
-                        <!-- Pagination -->
-                        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                            <nav aria-label="Table navigation">
-                                <ul class="inline-flex items-center">
+                            <span class="flex items-center col-span-3">
+                                Showing Pages {{ $asayshes->currentPage() }} from {{ $asayshes->lastItem() }} to
+                                {{ $asayshes->currentPage() }}
+                            </span>
+                            <span class="col-span-2"></span>
+                            <!-- Pagination -->
+                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                                <nav aria-label="Table navigation">
+                                    <ul class="inline-flex items-center">
 
-                                    {{ $asayshes->links() }}
-                                </ul>
-                            </nav>
-                        </span>
-                    </div>
+                                        {{ $asayshes->links() }}
+                                    </ul>
+                                </nav>
+                            </span>
+                        </div>
 
                     </div>
-                </div>
-            @else
+            </div>
+        @else
             <div class="container flex flex-col items-center px-6 mx-auto">
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
 
                 <p class="text-gray-700 text-xl font-bold ">
-                  No data were found
-                  <a class="text-gray-700" href="">
-                    go back
-                  </a>
+                    No data were found
+                    <a class="text-gray-700" href="">
+                        go back
+                    </a>
                 </p>
-              </div>
+            </div>
             @endif
 
 
@@ -407,22 +444,26 @@
                 Report Cyber
             </h1>
 
-                <div class="container mx-auto rounded-lg my-6 space-y-10">
-                    <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
-                        <div>
-                            <label for="from">search: </label>
-                                <input  wire:model="SearchDataCyber" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search..." aria-label="Search">
-                            </div>
-                        <div class="">
-                            <label for="from">From: </label>
-                            <input wire:model="DataFirstCyber" type="date" id="from" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
-                        <div class="">
-                            <label for="to">To: </label>
-                            <input type="date" wire:model="DataSecondCyber" id="to" class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
-                        </div>
+            <div class="container mx-auto rounded-lg my-6 space-y-10">
+                <div class="grid gap-4 lg:grid-cols-3   md:grid-cols-1 grid-cols-1 lg:px-0 md:px-4 px-4 ">
+                    <div>
+                        <label for="from">search: </label>
+                        <input wire:model="SearchDataCyber"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
+                            type="text" placeholder="Search..." aria-label="Search">
                     </div>
-                    @if ($cybers->isNotEmpty())
+                    <div class="">
+                        <label for="from">From: </label>
+                        <input wire:model="DataFirstCyber" type="date" id="from"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                    <div class="">
+                        <label for="to">To: </label>
+                        <input type="date" wire:model="DataSecondCyber" id="to"
+                            class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
+                    </div>
+                </div>
+                @if ($cybers->isNotEmpty())
 
                     <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                         <table class="w-full table-auto">
@@ -454,11 +495,9 @@
 
 
                                             @if ($cyber->isSolved == true)
-                                            <span class="text-green-500 hover:text-green-600">Solved</span>
-
+                                                <span class="text-green-500 hover:text-green-600">Solved</span>
                                             @else
-                                            <span class="text-red-500 hover:text-green-600">Not Solved</span>
-
+                                                <span class="text-red-500 hover:text-green-600">Not Solved</span>
                                             @endif
                                         </td>
                                         <td class="py-3 px-6 text-center">
@@ -500,7 +539,8 @@
 
 
                                         <td class="py-3 px-6 text-center">
-                                            <button type="button" wire:click="$set('showmodelcyber','{{ $cyber->note }}')"
+                                            <button type="button"
+                                                wire:click="$set('showmodelcyber','{{ $cyber->note }}')"
                                                 class="w-4 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                                 <i class="fa-solid fa-eye"></i>
 
@@ -508,74 +548,89 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                          {{-- Show Model Asyaish --}}
-                                          @if ($showmodelcyber  !== null)
-                                          <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                              <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                                              <div class="fixed z-10 inset-0 overflow-y-auto">
-                                                <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
-                                                  <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                {{-- Show Model Asyaish --}}
+                                @if ($showmodelcyber !== null)
+                                    <div class="relative z-10" aria-labelledby="modal-title" role="dialog"
+                                        aria-modal="true">
+                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                                        <div class="fixed z-10 inset-0 overflow-y-auto">
+                                            <div
+                                                class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                                                <div
+                                                    class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
                                                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                                      <div class="sm:flex sm:items-start">
-                                                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                                                             <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
-                                                           </svg>
+                                                        <div class="sm:flex sm:items-start">
+                                                            <div
+                                                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    class="h-6 w-6 text-red-500" viewBox="0 0 20 20"
+                                                                    fill="currentColor">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                                                        clip-rule="evenodd" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                                <div class="mt-2">
+                                                                    <p class="text-sm text-gray-500">
+                                                                        {!! $Getshowmodelcyber !!}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                          <div class="mt-2">
-                                                            <p class="text-sm text-gray-500">{!! $Getshowmodelcyber !!}</p>
-                                                          </div>
-                                                        </div>
-                                                      </div>
                                                     </div>
-                                                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                                    <div
+                                                        class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
-                                                      <button wire:click="$set('showmodelcyber',null)" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                                        <button wire:click="$set('showmodelcyber',null)"
+                                                            type="button"
+                                                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
                                                     </div>
-                                                  </div>
                                                 </div>
-                                              </div>
                                             </div>
-                                            @endif
-                                            {{--  end Asyaish Model  --}}
+                                        </div>
+                                    </div>
+                                @endif
+                                {{-- end Asyaish Model --}}
 
                             </tbody>
                         </table>
                         <div
-                        class="grid px-4  mt-2 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
+                            class="grid px-4  mt-2 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
                           bg-gray-50 sm:grid-cols-9">
-                        <span class="text-2xl font-bold flex items-center col-span-3 ">
-                            Showing Pages {{ $cybers->currentPage() }} from {{ $cybers->lastItem() }} to {{ $cybers->currentPage() }}
-                        </span>
-                        <span class="col-span-2"></span>
-                        <!-- Pagination -->
-                        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                            <nav aria-label="Table navigation">
-                                <ul class="inline-flex items-center">
+                            <span class="text-2xl font-bold flex items-center col-span-3 ">
+                                Showing Pages {{ $cybers->currentPage() }} from {{ $cybers->lastItem() }} to
+                                {{ $cybers->currentPage() }}
+                            </span>
+                            <span class="col-span-2"></span>
+                            <!-- Pagination -->
+                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                                <nav aria-label="Table navigation">
+                                    <ul class="inline-flex items-center">
 
-                                    {{ $cybers->links() }}
-                                </ul>
-                            </nav>
-                        </span>
+                                        {{ $cybers->links() }}
+                                    </ul>
+                                </nav>
+                            </span>
+                        </div>
                     </div>
-                    </div>
-                </div>
-            @else
+            </div>
+        @else
             <div class="container flex flex-col items-center px-6 mx-auto">
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mt-8 text-red-500" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
 
                 <p class="text-gray-700 text-xl font-bold ">
-                  No data were found
-                  <a class="text-gray-700" href="">
-                    go back
-                  </a>
+                    No data were found
+                    <a class="text-gray-700" href="">
+                        go back
+                    </a>
                 </p>
-              </div>
-         @endif
+            </div>
+            @endif
 
 
         </div>

@@ -17,7 +17,6 @@ class isActive
      */
     public function handle(Request $request, Closure $next)
     {
-        error_log(auth()->check());
         if (Auth::user()->status === 1) {
             return $next($request);
         } else {

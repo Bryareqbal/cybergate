@@ -71,7 +71,7 @@
             {{ session('success') }}
         </div>
         @elseif(session()->has('error'))
-        <div class="bg-green-100 border-l-4  py-1 border-green-500 text-green-700 p-4 mb-4"
+        <div class="bg-red-100 border-l-4  py-1 border-red-500 text-red-700 p-4 mb-4"
             role="alert">
             {{ session('error') }}
         </div>
@@ -169,7 +169,9 @@
                         <td class="py-3 px-6 text-center">
                             <div class="flex item-center justify-center">
 
-                                <a href="/user/profile"
+                                @can('isSuperadmin')
+
+                                <a wire:click="switchUser('{{ $user->id }}')"   data-modal-toggle="extralarge-modal"
                                     class="w-8 mr-2 transform text-blue-400 hover:text-blue-500 hover:scale-110">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
@@ -177,6 +179,8 @@
                                             d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>
                                 </a>
+                                @endcan
+
                                 @if ($user->permission !== 'superadmin')
                                 <button type="button" wire:click="$set('disableModal', {{ $user->id }})"
                                     class="w-8 mr-2 transform text-yellow-400 hover:text-yellow-500 hover:scale-110">
@@ -199,6 +203,124 @@
                             </div>
                         </td>
                     </tr>
+
+<!-- Extra Large Modal -->
+<div wire:ignore.self id="extralarge-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-7xl h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow ">
+            <!-- Modal header -->
+            <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+                <h3 class="text-xl font-medium text-gray-900 ">
+                    Edit Profile
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="extralarge-modal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+
+                <div class="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1  mt-0 md:divide-y-0 divide-y-2 lg:divide-x-2 divide-gray-400">
+                 <div class="mt-0 p-5">
+                    <form wire:submit.prevent="EditUser('{{ $user->id }}')" class="space-y-3" >
+
+                        <div class="flex flex-col space-y-3">
+                            <div class="">
+                                <label for="name">Name</label>
+                                <input wire:model.defer="editUserForm.newName" type="text" class="w-full px-3 py-2 rounded ">
+                            </div>
+                            @error('editUserForm.newName')
+                            <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+                            <div class="basis-1/2">
+                                <label for="email">Email</label>
+                                <input wire:model.defer="editUserForm.newEmail" type="email"
+                                    class="w-full px-3 py-2 rounded ">
+                            </div>
+                            @error('editUserForm.newEmail')
+                            <div class="text-red-500 text-sm">{{ $message }}</div>
+                            @enderror
+
+
+                        </div>
+
+
+
+
+                        <div class="flex items-start my-2    ">
+
+                            <button  type="submit"  data-modal-toggle="extralarge-modal"
+                                class=" text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+                            dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2   ">
+                                Save
+                            </button>
+
+                        </div>
+                    </form>
+                 </div>
+
+                 @if ($user->permission === "superadmin" || auth()->user()->id === $dataId)
+
+                 @else
+                 <div class="mt-0 p-5">
+                    <form   wire:submit.prevent="EditPassword('{{ $user->id }}')">
+
+
+
+                        <div class="flex flex-col space-y-1">
+                            <label for="password">New Password</label>
+                            <input wire:model.defer="newPassword" type="password"
+                                class="px-3 py-2 rounded ">
+                                @error('newPassword')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                                @enderror
+                        </div>
+                        <div class="flex flex-col space-y-1">
+                            <label for="password">Confirm Password</label>
+                            <input wire:model.defer="confirmPassword" type="password"
+                                class="px-3 py-2 rounded ">
+                                @error('confirmPassword')
+                                <div class="text-red-500 text-sm">{{ $message }}</div>
+                                @enderror
+                        </div>
+
+
+
+
+
+                        <div class="flex items-start my-2    ">
+
+                            <button type="submit"  data-modal-toggle="extralarge-modal"
+                                class=" text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+                            dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2   ">
+                                Save
+                            </button>
+
+                        </div>
+                    </form>
+                 </div>
+
+
+                 @endif
+
+
+
+                </div>
+
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+
+                 <button data-modal-toggle="extralarge-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
                     @endforeach
 
 
@@ -281,7 +403,7 @@
                                 <option value="asaysh">Asaysh</option>
                             </select>
                         </div>
-                        <button class="px-3 py-2 bg-green-500 rounded text-white w-full">Create</button>
+                        <button type="submit" class="px-3 py-2 bg-green-500 rounded text-white w-full">Create</button>
 
                     </form>
                 </div>
@@ -327,5 +449,7 @@
     </div>
 </form>
 @endif
+
+
 
 </div>

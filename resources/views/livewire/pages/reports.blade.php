@@ -70,11 +70,12 @@
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left">name</th>
+                                    <th class="py-3 px-6 text-left">Name</th>
                                     <th class="py-3 px-6 text-left">Case Title</th>
-                                    <th class="py-3 px-6 text-center">email</th>
-                                    <th class="py-3 px-6 text-center">created at</th>
-                                    <th class="py-3 px-6 text-center">last updated</th>
+                                    <th class="py-3 px-6 text-center">Email</th>
+                                    <th class="py-3 px-6 text-center">Creator</th>
+                                    <th class="py-3 px-6 text-center">Created at</th>
+                                    <th class="py-3 px-6 text-center">Last updated</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -97,6 +98,10 @@
                                         <td class="py-3 px-6 text-center  ">
 
                                             <span>{{ $data->email ?? 'no email' }}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center  ">
+
+                                            <span>{{ $data->user->name ?? 'no name' }}</span>
                                         </td>
                                         <td class="py-3 px-6 text-center">
                                             <span class="flex justify-center ">
@@ -199,16 +204,10 @@
 
 
 
-                        <div
-                            class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
-                          bg-gray-50 sm:grid-cols-9">
-                            <span class="flex items-center col-span-3">
-                                Showing Pages {{ $datas->currentPage() }} from {{ $datas->lastItem() }} to
-                                {{ $datas->currentPage() }}
-                            </span>
+                        <div class="flex justify-end p-2 ">
                             <span class="col-span-2"></span>
                             <!-- Pagination -->
-                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                            <span class="flex col-span-4 mt-2 sm:mt-auto justify-end">
                                 <nav aria-label="Table navigation">
                                     <ul class="inline-flex items-center">
 
@@ -273,8 +272,10 @@
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left">fullname</th>
-                                    <th class="py-3 px-6 text-center">email</th>
+                                    <th class="py-3 px-6 text-left">Name</th>
+                                    <th class="py-3 px-6 text-center">Case Title</th>
+                                    <th class="py-3 px-6 text-center">Email</th>
+                                    <th class="py-3 px-6 text-center">Asaish</th>
                                     <th class="py-3 px-6 text-center">Is Approved</th>
                                     <th class="py-3 px-6 text-center">created at</th>
                                     <th class="py-3 px-6 text-center">last updated</th>
@@ -293,7 +294,15 @@
                                         </td>
                                         <td class="py-3 px-6 text-center  ">
 
-                                            <span>{{ $asaysh->user->email }}</span>
+                                            <span>{{ $asaysh->data->case }}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center  ">
+
+                                            <span>{{ $asaysh->data->email }}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center  ">
+
+                                            <span>{{ $asaysh->user->name }}</span>
                                         </td>
                                         <td class="py-3 px-6 text-center">
 
@@ -397,16 +406,10 @@
 
                             </tbody>
                         </table>
-                        <div
-                            class="grid px-4  text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
-                          bg-gray-50 sm:grid-cols-9">
-                            <span class="flex items-center col-span-3">
-                                Showing Pages {{ $asayshes->currentPage() }} from {{ $asayshes->lastItem() }} to
-                                {{ $asayshes->currentPage() }}
-                            </span>
+                        <div class="flex justify-end p-2">
                             <span class="col-span-2"></span>
                             <!-- Pagination -->
-                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                            <span class="flex col-span-4 mt-2 sm:mt-auto justify-end">
                                 <nav aria-label="Table navigation">
                                     <ul class="inline-flex items-center">
 
@@ -463,17 +466,19 @@
                             class="w-full pl-8 pr-2 text-sm  rounded-lg placeholder-gray-600 bg-gray-100 border-0 rounded-mddark:focus:placeholder-gray-600  focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input">
                     </div>
                 </div>
-                @if ($cybers->isNotEmpty())
+                @if (!empty($cybers))
 
                     <div class="container md:mx-auto overflow-auto max-h-[50vh]">
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left">case title</th>
-                                    <th class="py-3 px-6 text-center">cyber</th>
+                                    <th class="py-3 px-6 text-left">Name</th>
+                                    <th class="py-3 px-6 text-left">Case Title</th>
+                                    <th class="py-3 px-6 text-center">Email</th>
+                                    <th class="py-3 px-6 text-center">Cyber</th>
                                     <th class="py-3 px-6 text-center">Is solved?</th>
-                                    <th class="py-3 px-6 text-center">created at</th>
-                                    <th class="py-3 px-6 text-center">last updated</th>
+                                    <th class="py-3 px-6 text-center">Created at</th>
+                                    <th class="py-3 px-6 text-center">Last updated</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -484,12 +489,23 @@
                                         <td class="py-3 px-6 text-left ">
                                             <div class="flex items-center">
 
+                                                <span class="">{{ $cyber->data->fullname }}</span>
+                                            </div>
+
+                                        </td>
+                                        <td class="py-3 px-6 text-left ">
+                                            <div class="flex items-center">
+
                                                 <span class="">{{ $cyber->data->case }}</span>
                                             </div>
                                         </td>
                                         <td class="py-3 px-6 text-center  ">
 
-                                            <span>{{ $cyber->data->fullname }}</span>
+                                            <span>{{ $cyber->data->email }}</span>
+                                        </td>
+                                        <td class="py-3 px-6 text-center  ">
+
+                                            <span>{{ $cyber->user->name }}</span>
                                         </td>
                                         <td class="py-3 px-6 text-center">
 
@@ -594,16 +610,10 @@
 
                             </tbody>
                         </table>
-                        <div
-                            class="grid px-4  mt-2 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t
-                          bg-gray-50 sm:grid-cols-9">
-                            <span class="text-2xl font-bold flex items-center col-span-3 ">
-                                Showing Pages {{ $cybers->currentPage() }} from {{ $cybers->lastItem() }} to
-                                {{ $cybers->currentPage() }}
-                            </span>
+                        <div class="flex justify-end p-2">
                             <span class="col-span-2"></span>
                             <!-- Pagination -->
-                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                            <span class="flex col-span-4 mt-2 sm:mt-auto justify-end">
                                 <nav aria-label="Table navigation">
                                     <ul class="inline-flex items-center">
 

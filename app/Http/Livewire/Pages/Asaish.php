@@ -49,7 +49,7 @@ class Asaish extends Component
 
     public function render()
     {
-        $Data=Data::search($this->search)->where('status', null)->where('approvedByAdmin', true)->latest()->paginate(12);
+        $Data=Data::search($this->search)->where('status', null)->where('approvedByAdmin', true)->latest()->simplePaginate(12);
         return view('livewire.pages.asaish', compact('Data'))->extends('layouts.layout', ['title' => 'Asaish']);
     }
 }

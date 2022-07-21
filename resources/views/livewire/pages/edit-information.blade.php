@@ -281,16 +281,12 @@
                 </div>
 
             </div>
-            <div wire:ignore.self class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
-                    problem</span>
+            <div wire:ignore class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description problem</span>
+                <textarea wire:model.defer="description" id="description"
+                    class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input">
+                {!! $description !!}</textarea>
 
-
-                    <input id="x"  type="hidden" name="content">
-                    <trix-editor  wire:model.defer="form.description" name="content" input="x"></trix-editor>
-                @error('form.description')
-                    <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
-                @enderror
             </div>
 
 
@@ -302,6 +298,17 @@
                 </div>
             @endif
 
+            @if (session()->has('form_updated'))
+            <div class="lg:max-w-lg items-center bg-green-100  py-1 border-l-4 border-green-500 text-green-700 p-4 mb-12"
+                role="alert">
+                {{ session('form_updated') }}
+            </div>
+        @elseif (session()->has('form_not_updated'))
+            <div class="lg:max-w-lg items-center bg-red-100  py-1 border-l-4 border-red-500 text-red-700 p-4 mb-12"
+                role="alert">
+                {{ session('form_not_updated') }}
+            </div>
+        @endif
             <div class="flex justify-center items-center   ">
                 <button type="submit"
                     class=" capitalize my-3 mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -311,5 +318,30 @@
         </form>
 
     </div>
+
+
+    @push('scripts')
+    <script>
+        $('#description').summernote({
+            placeholder: 'Enter your description',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', ]],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('description', contents);
+                }
+            }
+        });
+    </script>
+@endpush
 
 </div>

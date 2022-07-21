@@ -16,6 +16,7 @@ class EditInformation extends Component
     public $form;
     public $personal_image;
     public $file_image;
+    public $description;
     protected $rules = [
         "form.fullname" => "required",
         "form.email" => "email",
@@ -55,6 +56,7 @@ class EditInformation extends Component
         // $this->form['fullname'] = $this->form['fullname'];
         $this->form = $id;
         $this->form['links'] = json_decode($this->form->links);
+        $this->description=$this->form['description'];
     }
 
     public function saveData()
@@ -71,7 +73,7 @@ class EditInformation extends Component
         $data->state_address = $this->form["state_address"];
         $data->quarter_address = $this->form["quarter_address"];
         $data->links = json_encode($this->form["links"]);
-        $data->description = $this->form["description"];
+        $data->description = $this->description;
         $data->case = $this->form["case"];
         $data->type_of_problem = $this->form["type_of_problem"];
         $data->whgcase = $this->form["whgcase"];
@@ -80,7 +82,7 @@ class EditInformation extends Component
         if ($data->save()) {
             $this->form = $data;
             $this->form['links'] = json_decode($this->form->links);
-            return session()->flash("form_updated", "the form has been saved successfully");
+            return session()->flash("form_updated", "Data has been updated successfully");
         } else {
             return session()->flash("form_not_updated", "the form has not been saved");
         }

@@ -30,7 +30,8 @@ class data extends Model
     public static function search($search)
     {
         return empty($search) ? static::query() :
-         static::where('fullname', 'LIKE', '%'.$search.'%')
-        ->orWhere('email', 'LIKE', '%'.$search.'%');
+         static::where(function ($query) use ($search) {
+             $query->where('fullname', 'LIKE', '%'.$search.'%')->orWhere('email', 'LIKE', '%'.$search.'%');
+         });
     }
 }

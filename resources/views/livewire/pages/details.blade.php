@@ -60,9 +60,12 @@
 
                                 <ul class="space-y-2 lg:list-disc md:list-disc sm:list-none  list-inside mb-12 ">
                                     @foreach (json_decode($case->links) as $key => $value)
-                                        <li class="hover:scale-105 duration-150 ease-in"><a href="{{ $value }}"
-                                                class="text-blue-500 hover:text-blue-600 "
-                                                target="_blank">{{ $key }}</a></li>
+                                        @if (!empty($value))
+                                            <li class="hover:scale-105 duration-150 ease-in"><a
+                                                    href="{{ $value }}"
+                                                    class="text-blue-500 hover:text-blue-600 "
+                                                    target="_blank">{{ $key }}</a></li>
+                                        @endif
                                     @endforeach
 
                                 </ul>

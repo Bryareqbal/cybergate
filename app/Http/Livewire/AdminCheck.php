@@ -15,22 +15,23 @@ class AdminCheck extends Component
     {
         $case = data::find($caseId);
         $case->approvedByAdmin = true;
+        $case->status = "Approved";
         $case->save();
     }
 
-    public function disaprroveCase(int $caseId)
+    public function sendToAsaysh(int $caseId)
     {
         $case = data::find($caseId);
-        $case->approvedByAdmin = false;
+        $case->approvedByAdmin = true;
         $case->save();
     }
 
     public function render()
     {
-        $newCases = data::where("status", null)->where('approvedByAdmin', null)->oldest()->paginate(12);
+        $newCases = data::where("status", null)->where('approvedByAdmin', null)->oldest()->simplePaginate(12, ['*'], 'unchecked');
         $this->from && $this->to ?
-        $allCases = data::search($this->search)->where('approvedByAdmin', '!=', null)->whereBetween('created_at', [$this->from, $this->to])->paginate(12) :
-        $allCases = data::search($this->search)->where('approvedByAdmin', '!=', null)->paginate(12);
+        $allCases = data::search($this->search)->where('approvedByAdmin', '!=', null)->whereBetween('created_at', [$this->from, $this->to])->simplePaginate(12, ['*'], 'allCases') :
+        $allCases = data::search($this->search)->where('approvedByAdmin', '!=', null)->simplePaginate(12, ['*'], 'allCases');
         return view('livewire.admin-check', ['newCases' => $newCases, 'allCases' => $allCases])->extends('layouts.layout', ['title' => 'Admin Check']);
     }
 }

@@ -144,15 +144,14 @@
                                             <i class="fa-solid fa-eye"></i>
 
                                         </a>
-                                        <button wire:click="disaprroveCase({{ $case->id }})"type="button"
-                                            class="w-4 mr-2 transform text-red-400 hover:text-red-500 hover:scale-110">
-                                            <i class="fa-solid fa-xmark"></i>
-
-                                        </button>
                                         <button wire:click="approveCase({{ $case->id }})"type="button"
                                             class="w-4 mr-2 transform text-green-400 hover:text-green-500 hover:scale-110">
                                             <i class="fa-solid fa-check"></i>
 
+                                        </button>
+                                        <button wire:click="sendToAsaysh({{ $case->id }})"type="button"
+                                            class="w-4 mr-2 transform text-sky-400 hover:text-sky-500 hover:scale-110">
+                                            <i class="fa-solid fa-building-shield"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -276,7 +275,7 @@
                                         @endif
                                     </td>
                                     <td class="py-3 px-6 text-center  ">
-                                        @if ($case->status === 'Apporved')
+                                        @if ($case->status === 'Approved')
                                             <span class="text-green-500">Approved</span>
                                         @elseif ($case->status === 'Disapproved')
                                             <span class="text-red-500">Disapproved</span>

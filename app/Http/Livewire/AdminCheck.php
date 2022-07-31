@@ -11,19 +11,24 @@ class AdminCheck extends Component
     public $search;
     public $from;
     public $to;
-    public function approveCase(int $caseId)
+    public $adminCheckModal;
+    public $asayshCheckModal;
+    public function approveCase()
     {
-        $case = data::find($caseId);
+        $case = data::find($this->adminCheckModal);
         $case->approvedByAdmin = true;
         $case->status = "Approved";
         $case->save();
+        $this->adminCheckModal = false;
+
     }
 
-    public function sendToAsaysh(int $caseId)
+    public function sendToAsaysh()
     {
-        $case = data::find($caseId);
+        $case = data::find($this->asayshCheckModal);
         $case->approvedByAdmin = true;
         $case->save();
+        $this->asayshCheckModal = false;
     }
 
     public function render()

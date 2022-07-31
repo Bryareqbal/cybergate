@@ -11,7 +11,11 @@
                 {{ session('status') }}
             </div>
         @endif
-
+        @error('userDisable')
+            <div class="mb-4 font-medium text-sm text-red-600">
+                {{ session('userDisable') }}
+            </div>
+        @enderror
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

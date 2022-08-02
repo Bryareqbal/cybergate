@@ -343,8 +343,10 @@
                     problem</span>
                 <textarea wire:model.defer="description" id="description"
                     class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
-
             </div>
+            @error('description')
+                <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
+            @enderror
 
 
 
@@ -357,13 +359,19 @@
             @endif
 
 
+            @if (count($errors) > 0)
+                <div class="lg:max-w-lg items-center  py-1 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-12"
+                    role="alert">
+                    please fill the form as required
+                </div>
+            @endif
             <div class="flex justify-center items-center   ">
                 <button type="submit" id="submit2"
                     class=" capitalize my-3 mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     submit
+                    <i class="fa-solid fa-spinner animate-spin text-2xl" wire:loading wire:target="saveData"></i>
                 </button>
             </div>
-
 
 
 

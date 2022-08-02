@@ -347,6 +347,7 @@
             </div>
         </div>
     </div>
+
     @unless(empty($adminCheckModal))
         <div wire:ignore.self tabindex="-1"
             class="fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal h-full justify-center items-center flex bg-black/25"
@@ -381,6 +382,7 @@
             </div>
         </div>
     @endunless
+
     @unless(empty($asayshCheckModal))
         <div wire:ignore.self tabindex="-1"
             class="fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal h-full justify-center items-center flex bg-black/25"
@@ -407,7 +409,7 @@
                             <button type="button" class="px-4 py-2 rounded hover:bg-slate-50 shadow"
                                 wire:click.prevent="$toggle('asayshCheckModal')">no</button>
                             <button type="button" class="px-4 py-2 rounded bg-sky-500 hover:bg-sky-600 shadow text-white"
-                                wire:click.prevent="sendToAsaysh">yes</button>
+                                wire:click="sendToAsaysh">yes</button>
                         </div>
                     </div>
                 </div>

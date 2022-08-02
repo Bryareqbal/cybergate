@@ -50,6 +50,7 @@ class CreateInformation extends Component
         "form.file_image.*"=> "required|mimes:jpg,png|file|max:2048",
         "form.personal_image" => "required|mimes:jpg,png|file|max:2048",
         "form.personal_id" => "required|min:5|max:15",
+        "description" => "required",
     ];
 
     protected $validationAttributes = [
@@ -65,10 +66,10 @@ class CreateInformation extends Component
         "form.personal_image" => "Personal Image",
         "form.personal_id" => "Personal ID",
     ];
-
+    public $errors = [];
     public function saveData()
     {
-        $this->validate();
+        $this->errors = $this->validate();
         $orginalPersonalImage = $this->form["personal_image"];
         $orginalPersonalImageExt = $orginalPersonalImage->getClientOriginalExtension();
         $orginalPersonalImageName  = time() . "." . $orginalPersonalImageExt;
@@ -77,15 +78,14 @@ class CreateInformation extends Component
 
 
         $FileImageNames = [];
-        foreach ($this->form["file_image"] as $file) {
+        foreach ($this->form["file_image"] as $key => $file) {
             $orginalFileImage = $file;
             $orginalFileImageExt = $orginalFileImage->getClientOriginalExtension();
             $orginalFileImageName  = time() . "." . $orginalFileImageExt;
             $thumpFileImage = Image::make($orginalFileImage);
             $thumpFileImage->save('uploads/fileImages/'.$orginalFileImageName, 90);
-            $FileImageName[] = $orginalFileImageName;
+            $FileImageNames[$key] = $orginalFileImageName;
         }
-
         if ($orginalPersonalImage && $orginalFileImage) {
             $data = new data();
             $data->fullname = $this->form["fullname"];
@@ -108,9 +108,9 @@ class CreateInformation extends Component
             $data->personal_id = $this->form["personal_id"];
             $data->save();
         }
+        session()->flash('message', ' your information has been added');
         $this->reset('form');
         $this->reset('description');
-        session()->flash('message', ' your information has been added');
     }
 
 

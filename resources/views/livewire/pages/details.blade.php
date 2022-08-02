@@ -91,9 +91,13 @@
                         </div>
                         <div class="mb-12">
                             <h1 class="text-2xl  font-bold mb-3">Attached Image</h1>
-                            <div class="w-1/2 mx-auto">
-                                <img class="w-full object-cover rounded-lg" src="{{ $case->attached_file }}"
-                                    alt="">
+                            <div class="w-2/3 mx-auto space-y-5 ">
+                                @foreach (json_decode($case->file_image) as $key => $value)
+                                    @if (!empty($value))
+                                        <img class="w-full object-cover rounded-lg"
+                                            src="{{ asset('uploads/fileImages/' . $value) }}" alt="">
+                                    @endif
+                                @endforeach
                             </div>
 
                         </div>

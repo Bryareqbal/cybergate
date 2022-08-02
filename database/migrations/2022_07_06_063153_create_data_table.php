@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->text('links')->default(null);
             $table->string('case')->nullable();
             $table->string('type_of_problem')->nullable();
-            $table->text('description')->defalut(null);
+            $table->text('description');
             $table->string('whgcase')->nullable();
             $table->integer('user_id');
             $table->string('file_image')->nullable();

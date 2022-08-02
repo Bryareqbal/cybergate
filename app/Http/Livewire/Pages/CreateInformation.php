@@ -47,7 +47,7 @@ class CreateInformation extends Component
         "form.date_of_birth" => "required|date",
         "form.case" => "required",
         "form.type_of_problem" => "required",
-        "form.file_image" => "required|mimes:jpg,png|file|max:2048",
+        "form.file_image.*"=> "required|mimes:jpg,png|file|max:2048",
         "form.personal_image" => "required|mimes:jpg,png|file|max:2048",
         "form.personal_id" => "required|min:5|max:15",
     ];
@@ -70,15 +70,21 @@ class CreateInformation extends Component
     {
         $this->validate();
         $orginalPersonalImage = $this->form["personal_image"];
-        $orginalFileImage = $this->form["file_image"];
-
         $orginalPersonalImageExt = $orginalPersonalImage->getClientOriginalExtension();
-        $orginalFileImageExt = $orginalFileImage->getClientOriginalExtension();
         $orginalPersonalImageName  = time() . "." . $orginalPersonalImageExt;
-        $orginalFileImageName  = time() . "." . $orginalFileImageExt;
-
         $thumpPersonalImage = Image::make($orginalPersonalImage)->fit(300, 300);
-        $thumpFileImage = Image::make($orginalFileImage);
+        $thumpPersonalImage->save('uploads/personalImages/'.$orginalPersonalImageName, 60);
+
+
+        $FileImageNames = [];
+        foreach ($this->form["file_image"] as $file) {
+            $orginalFileImage = $file;
+            $orginalFileImageExt = $orginalFileImage->getClientOriginalExtension();
+            $orginalFileImageName  = time() . "." . $orginalFileImageExt;
+            $thumpFileImage = Image::make($orginalFileImage);
+            $thumpFileImage->save('uploads/fileImages/'.$orginalFileImageName, 90);
+            $FileImageName[] = $orginalFileImageName;
+        }
 
         if ($orginalPersonalImage && $orginalFileImage) {
             $data = new data();
@@ -97,11 +103,9 @@ class CreateInformation extends Component
             $data->type_of_problem = $this->form["type_of_problem"];
             $data->whgcase = null;
             $data->user_id = Auth::id();
-            $data->file_image = $orginalFileImageName;
+            $data->file_image = json_encode($FileImageNames);
             $data->personal_image = $orginalPersonalImageName;
             $data->personal_id = $this->form["personal_id"];
-            $thumpPersonalImage->save('uploads/personalImages/'.$orginalPersonalImageName, 60);
-            $thumpFileImage->save('uploads/fileImages/'.$orginalFileImageName, 60);
             $data->save();
         }
         $this->reset('form');

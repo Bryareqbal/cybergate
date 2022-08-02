@@ -96,7 +96,7 @@
                         <input wire:model.defer="form.email" name="email"
                             class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"
                             placeholder="Email Address (optional)" />
-                            @error('form.email')
+                        @error('form.email')
                             <small class="text-red-500 whitespace-nowrap text-xs mb-1">{{ $message }}</small>
                         @enderror
 
@@ -303,8 +303,12 @@
                     @if ($form['file_image'])
                         <div class="flex flex-col  md:justify-center justify-center">
                             <p> Photo Preview</p>
-                            <img class="object-cover w-72 h-80 rounded-lg mb-1 mt-2"
-                                src="{{ $form['file_image']->temporaryUrl() }}">
+                            <div class="flex gap-5 flex-wrap flex-col md:flex-row">
+                                @foreach ($form['file_image'] as $files)
+                                    <img class="object-cover w-72 h-80 rounded-lg mb-1 mt-2"
+                                        src="{{ $files->temporaryUrl() }}">
+                                @endforeach
+                            </div>
                         </div>
                     @endif
                     <div
@@ -321,7 +325,7 @@
                                     class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                     <span>Upload a file</span>
                                     <input id="file-upload2" name="file-upload" wire:model.defer="form.file_image"
-                                        type="file" class="sr-only">
+                                        type="file" class="sr-only" multiple>
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                             </div>
@@ -335,7 +339,8 @@
                 </div>
             </div>
             <div wire:ignore class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description problem</span>
+                <span class="text-gray-700 dark:text-gray-400 capitalize text-lg font-semibold mb-2">description
+                    problem</span>
                 <textarea wire:model.defer="description" id="description"
                     class="block w-full mt-1 text-sm focus:outline-none sm:text-sm rounded-lg border-gray-300 focus:shadow-outline-purple form-input"></textarea>
 
@@ -367,28 +372,28 @@
     </div>
 
     @push('scripts')
-    <script>
-        $('#description').summernote({
-            placeholder: 'Enter your description',
-            tabsize: 2,
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', ]],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    @this.set('description', contents);
+        <script>
+            $('#description').summernote({
+                placeholder: 'Enter your description',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', ]],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        @this.set('description', contents);
+                    }
                 }
-            }
-        });
-    </script>
-@endpush
+            });
+        </script>
+    @endpush
 
 
 
